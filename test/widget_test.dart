@@ -5,26 +5,21 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
-import 'package:flutter/material.dart';
+import 'package:book_my_table_app/bootstrap.dart';
+import 'package:book_my_table_app/data/handler/app_environment.dart';
+import 'package:book_my_table_app/my_app.dart';
+import 'package:book_my_table_app/utils/common_enums.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:book_my_table_app/main.dart';
-
-void main() {
+void main() async {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
+    // 🧩 Inject the selected environment into the app's configuration
+    AppEnvironment.setEnvironment(EnvironmentType.production);
+
+    // 🧱 Execute bootstrap logic (storage, Firebase, notifications, orientation, crashlytics, etc.)
+    await bootstrap();
+
+    // 🚀 Launch the app
     await tester.pumpWidget(const MyApp());
-
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
-
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
   });
 }
