@@ -1,3 +1,4 @@
+import 'package:book_my_table_app/res/app_custom_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -54,13 +55,12 @@ class UiUtils {
     onTap: onTap,
     child: SizedBox(
       width: 40 + (AppTextStyle.textFieldStyle(Get.context!).fontSize ?? 0),
-      child: Center(
-        child: Text(
-          "+91",
-          style: AppTextStyle.textFieldStyle(Get.context!),
-        ),
-      ),
+      child: Center(child: Text("+91", style: AppTextStyle.textFieldStyle(Get.context!))),
     ).paddingOnly(left: 8),
   );
 
+  static Widget togglePasswordIcon(BuildContext context, bool isPasswordVisible, {VoidCallback? onTap}) => GestureDetector(
+    onTap: onTap,
+    child: Icon(isPasswordVisible ? Icons.visibility_off : Icons.visibility, size: 20, color: customColors(context).kPrimaryColor),
+  );
 }

@@ -1,3 +1,4 @@
+import 'package:book_my_table_app/exports.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -30,6 +31,7 @@ class AppTextStyle {
     return Theme.of(context).textTheme.headlineMedium?.copyWith(
           fontSize: 24.0.sp,
           fontWeight: FontWeight.w600,
+          fontFamily: AppTheme.fontFamilyName,
           color: color ?? customColors(context).secondaryDark,
         );
   }
