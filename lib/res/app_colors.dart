@@ -10,6 +10,9 @@ class AppColors {
   static const Color secondary = Color(0x0fffffff);
   static const Color secondaryDark = Color(0xff181214);
 
+  static Color midnightGreen = const Color(0xFF121212);
+  static const Color whiteColor = Color(0xFFFFFFFF);
+
   /// Background Colors
   static const Color backgroundLight = Color(0xff1E1E1E);
   static const Color backgroundDark = Color(0xff1E1E1E);
@@ -22,7 +25,7 @@ class AppColors {
   static const Color textGreyDark = Color(0xFF837F80);
   static const Color textGreyMedium = Color(0xFF717171);
   static const Color textGreyLight = Color(0xFF4A4547);
-  static const Color textFieldBorder = Color(0xFFE8E8E8);
+  static const Color textFieldBorder = Color(0xFF999999);
   static const Color textFieldTitle = Color(0xFF777777);
   static const Color textError = Color(0xFFC03744);
   static const Color textYellowDark = Color(0xFF9C6600);

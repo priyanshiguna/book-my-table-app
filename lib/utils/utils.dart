@@ -15,6 +15,8 @@ const double defaultRadius = 8.0;
 const int defaultAmountLength = 12;
 const List<BoxShadow> defaultShadow = [BoxShadow(color: Colors.black12, blurRadius: 1)];
 
+const Duration defaultDuration = Duration(milliseconds: 300);
+
 bool isValEmpty(dynamic val) {
   String? value = val.toString();
   return (val == null || value.isEmpty || value == "null" || value == "" || value == "NULL");

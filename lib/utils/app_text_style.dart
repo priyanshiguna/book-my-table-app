@@ -7,11 +7,11 @@ class AppTextStyle {
   AppTextStyle._();
 
   static TextStyle textFieldStyle(BuildContext context) {
-    return TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400, color: customColors(context).textLoginTitle);
+    return TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400, color: customColors(context).whiteColor);
   }
 
   static TextStyle appButtonStyle(BuildContext context) {
-    return TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w600);
+    return TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w500,color: customColors(context).backgroundLight);
   }
 
   static TextStyle? loginTitleColor(BuildContext context, {Color? color}) {
@@ -20,6 +20,10 @@ class AppTextStyle {
           fontWeight: FontWeight.w700,
           color: color ?? customColors(context).textLoginTitle,
         );
+  }
+
+  static TextStyle textFieldHintStyle(BuildContext context) {
+    return TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400, color: customColors(context).textFieldBorder);
   }
 
   static TextStyle? titleStyle(BuildContext context, {Color? color}) {

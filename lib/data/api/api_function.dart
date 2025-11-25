@@ -10,7 +10,7 @@ class APIFunction {
   ///                                    OPTIONS & HEADER
   /// ***********************************************************************************
 
-  static getOptionsAndHeader({Duration? receiveTimeout, bool useRefreshToken = false}) {
+  static dio.Options getOptionsAndHeader({Duration? receiveTimeout, bool useRefreshToken = false}) {
     return Options(
       receiveTimeout: receiveTimeout ?? HttpUtil.defaultTimeoutDuration,
       headers: {

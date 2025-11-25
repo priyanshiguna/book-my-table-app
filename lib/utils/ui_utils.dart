@@ -9,6 +9,7 @@ import '../exports.dart';
 class UiUtils {
   static double appButtonHeight = 48.w;
   static double bottomBarHeight = 85;
+  static double appButtonHight = 48.w;
 
   static double bottomBarHeightWithPadding(BuildContext context) => MediaQuery.of(context).padding.bottom + bottomBarHeight + defaultPadding * 1.2;
 
@@ -19,11 +20,13 @@ class UiUtils {
     return Fluttertoast.showToast(msg: message ?? "", toastLength: Toast.LENGTH_SHORT, gravity: ToastGravity.BOTTOM, timeInSecForIosWeb: 1, fontSize: 16.0);
   }
 
-  static SystemUiOverlayStyle systemUiOverlayStyle({Color? statusBarColor, Brightness? statusBarIconBrightness, Brightness? statusBarBrightness, bool? reverse = false}) {
+  static SystemUiOverlayStyle systemUiOverlayStyle({bool? isReverse, Color? statusBarColor, Brightness? statusBarIconBrightness, Brightness? statusBarBrightness, Color? systemNavigationBarColor}) {
+    isReverse = (isReverse ?? Get.isDarkMode);
     return SystemUiOverlayStyle(
       statusBarColor: statusBarColor ?? Colors.transparent, // <-- SEE HERE
-      statusBarIconBrightness: statusBarIconBrightness ?? (Get.isDarkMode ? Brightness.light : Brightness.dark), //<-- For Android SEE HERE (dark icons)
-      statusBarBrightness: statusBarBrightness ?? (Get.isDarkMode ? Brightness.dark : Brightness.light), //<-- For iOS SEE HERE (dark icons)
+      statusBarIconBrightness: statusBarIconBrightness ?? (isReverse == true ? Brightness.light : Brightness.dark), //<-- For Android SEE HERE (dark icons)
+      statusBarBrightness: statusBarBrightness ?? (isReverse == true ? Brightness.dark : Brightness.light), //<-- For iOS SEE HERE (dark icons)
+      systemNavigationBarColor: systemNavigationBarColor ?? Colors.transparent,
     );
   }
 
@@ -32,4 +35,32 @@ class UiUtils {
   static Widget menuIcon() => const Icon(Icons.menu, size: 25);
 
   static Widget actionIcon() => const Icon(Icons.more_vert, size: 25);
+
+  static Widget fadeSwitcherWidget({Duration? duration, required Widget child}) {
+    return AnimatedSwitcher(
+      duration: duration ?? const Duration(milliseconds: 300),
+      transitionBuilder: (Widget child, Animation<double> animation) {
+        return FadeTransition(
+          opacity: CurvedAnimation(parent: animation, curve: Curves.easeIn),
+          child: child,
+        );
+      },
+      //? Anytime child key passing deferent.
+      child: child,
+    );
+  }
+
+  static Widget countryCodeWidget({VoidCallback? onTap}) => GestureDetector(
+    onTap: onTap,
+    child: SizedBox(
+      width: 40 + (AppTextStyle.textFieldStyle(Get.context!).fontSize ?? 0),
+      child: Center(
+        child: Text(
+          "+91",
+          style: AppTextStyle.textFieldStyle(Get.context!),
+        ),
+      ),
+    ).paddingOnly(left: 8),
+  );
+
 }

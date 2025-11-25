@@ -13,9 +13,9 @@ class AppTheme {
   /// **Light Theme**
   static ThemeData lightMode(BuildContext context) {
     return ThemeData.light().copyWith(
-      primaryColor: customColors(context).kPrimaryColor,
+      primaryColor: AppColors.kPrimaryColor,
       visualDensity: VisualDensity.comfortable,
-      scaffoldBackgroundColor: customColors(context).backgroundLight,
+      scaffoldBackgroundColor: AppColors.backgroundDark,
       shadowColor: const Color(0xFFdedcdc),
       dividerColor: AppColors.divider,
       splashColor: AppColors.kPrimaryColor.withAlpha(200),
@@ -50,6 +50,7 @@ class AppTheme {
           yellowBackground: AppColors.yellowBackground,
           surfaceGrey: AppColors.surfaceGrey,
           textFieldBorder: AppColors.textFieldBorder,
+          whiteColor: AppColors.whiteColor,
         ),
       ],
 
@@ -113,6 +114,7 @@ class AppTheme {
           yellowBackground: AppColors.yellowBackground,
           surfaceGrey: AppColors.surfaceGrey,
           textFieldBorder: AppColors.textFieldBorder,
+          whiteColor: AppColors.whiteColor,
           // bannerGradientColors: AppColors.bannerGradientColors,
         ),
       ],
