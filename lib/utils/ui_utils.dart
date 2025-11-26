@@ -1,4 +1,5 @@
 import 'package:book_my_table_app/res/app_custom_color.dart';
+import 'package:book_my_table_app/utils/extensions/color_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -63,4 +64,8 @@ class UiUtils {
     onTap: onTap,
     child: Icon(isPasswordVisible ? Icons.visibility_off : Icons.visibility, size: 20, color: customColors(context).kPrimaryColor),
   );
+
+  static Widget divider(BuildContext context) {
+    return Divider(color: customColors(context).textPrimaryBlack, thickness: 1, endIndent: defaultPadding / 2, indent: defaultPadding);
+  }
 }

@@ -9,5 +9,8 @@ class AppAssets {
   static String appLogoSvg = '${svgPath}app_logo.svg';
   static const String searchIcon = '${svgPath}search_icon.svg';
   static const String calenderIcon = "${svgPath}calender_icon.svg";
-//? JSON ( static String exampleJson = '${jsonPath}example.json'; )
+
+  static const String appleSvg = "${svgPath}apple.svg";
+  static const String googleSvg = "${svgPath}google.svg";
+  static const String facebookSvg = "${svgPath}facebook.svg";
 }
