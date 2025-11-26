@@ -34,6 +34,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
   // Miscellaneous Colors
   final Color surfaceGrey;
   final Color whiteColor;
+  final Color surfaceColor;
 
   const CustomColors({
     required this.kPrimaryColor,
@@ -57,10 +58,34 @@ class CustomColors extends ThemeExtension<CustomColors> {
     required this.yellowBackground,
     required this.surfaceGrey,
     required this.whiteColor,
+    required this.surfaceColor,
   });
 
   @override
-  CustomColors copyWith({Color? primaryRed, Color? secondaryDark, Color? backgroundLight, Color? backgroundDark, Color? tabletBackground, Color? textLoginTitle, Color? textPrimaryBlack, Color? textSecondaryBlack, Color? textGreyDark, Color? textGreyMedium, Color? textGreyLight, Color? textFieldTitle, Color? textFieldBorder, Color? textError, Color? textYellowDark, Color? iconBackground, Color? divider, Color? buttonGreen, Color? yellowBackground, Color? surfaceGrey, Color? whiteColor}) {
+  CustomColors copyWith({
+    Color? primaryRed,
+    Color? secondaryDark,
+    Color? backgroundLight,
+    Color? backgroundDark,
+    Color? tabletBackground,
+    Color? textLoginTitle,
+    Color? textPrimaryBlack,
+    Color? textSecondaryBlack,
+    Color? textGreyDark,
+    Color? textGreyMedium,
+    Color? textGreyLight,
+    Color? textFieldTitle,
+    Color? textFieldBorder,
+    Color? textError,
+    Color? textYellowDark,
+    Color? iconBackground,
+    Color? divider,
+    Color? buttonGreen,
+    Color? yellowBackground,
+    Color? surfaceGrey,
+    Color? whiteColor,
+    Color? surfaceColor,
+  }) {
     return CustomColors(
       kPrimaryColor: primaryRed ?? kPrimaryColor,
       secondaryDark: secondaryDark ?? this.secondaryDark,
@@ -83,6 +108,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
       surfaceGrey: surfaceGrey ?? this.surfaceGrey,
       textFieldBorder: textFieldBorder ?? this.textFieldBorder,
       whiteColor: whiteColor ?? this.whiteColor,
+      surfaceColor: surfaceColor ?? this.surfaceColor,
     );
   }
 
@@ -111,6 +137,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
       surfaceGrey: Color.lerp(surfaceGrey, other.surfaceGrey, t)!,
       textFieldBorder: Color.lerp(textFieldBorder, other.textFieldBorder, t)!,
       whiteColor: Color.lerp(whiteColor, other.whiteColor, t)!,
+      surfaceColor: Color.lerp(surfaceColor, other.surfaceColor, t)!,
     );
   }
 }
@@ -141,5 +168,6 @@ CustomColors customColors(BuildContext context) {
         surfaceGrey: Colors.grey.shade200,
         textFieldBorder: Colors.grey.shade500,
         whiteColor: Colors.white,
+        surfaceColor: Colors.grey.shade800,
       );
 }

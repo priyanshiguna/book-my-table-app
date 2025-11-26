@@ -51,6 +51,7 @@ class AppTheme {
           surfaceGrey: AppColors.surfaceGrey,
           textFieldBorder: AppColors.textFieldBorder,
           whiteColor: AppColors.whiteColor,
+          surfaceColor: AppColors.surfaceColor,
         ),
       ],
 
@@ -115,6 +116,7 @@ class AppTheme {
           surfaceGrey: AppColors.surfaceGrey,
           textFieldBorder: AppColors.textFieldBorder,
           whiteColor: AppColors.whiteColor,
+          surfaceColor: AppColors.surfaceColor,
           // bannerGradientColors: AppColors.bannerGradientColors,
         ),
       ],

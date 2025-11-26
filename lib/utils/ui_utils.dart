@@ -56,8 +56,17 @@ class UiUtils {
     onTap: onTap,
     child: SizedBox(
       width: 40 + (AppTextStyle.textFieldStyle(Get.context!).fontSize ?? 0),
-      child: Center(child: Text("+91", style: AppTextStyle.textFieldStyle(Get.context!))),
-    ).paddingOnly(left: 8),
+      child: Align(
+        alignment: Alignment.bottomLeft,
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text("+91", style: AppTextStyle.textFieldStyle(Get.context!).copyWith(color: customColors(Get.context!).whiteColor.withAppOpacity(.7))).paddingOnly(bottom: defaultPadding / 3),
+            Icon(Icons.keyboard_arrow_down_rounded, size: 20, color: customColors(Get.context!).textPrimaryBlack).paddingOnly(bottom: defaultPadding / 3),
+          ],
+        ),
+      ),
+    ),
   );
 
   static Widget togglePasswordIcon(BuildContext context, bool isPasswordVisible, {VoidCallback? onTap}) => GestureDetector(

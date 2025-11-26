@@ -29,6 +29,7 @@ class AppColors {
   static const Color textFieldTitle = Color(0xFF777777);
   static const Color textError = Color(0xFFC03744);
   static const Color textYellowDark = Color(0xFF9C6600);
+  static const Color surfaceColor = Color(0xFF2C2C2C);
 
   /// UI Component Colors
   static const Color iconBackground = Color(0xFFF3F3F3);

@@ -13,4 +13,9 @@ class AppAssets {
   static const String appleSvg = "${svgPath}apple.svg";
   static const String googleSvg = "${svgPath}google.svg";
   static const String facebookSvg = "${svgPath}facebook.svg";
+
+  static const String downArrowSvg = "${svgPath}down_arrow.svg";
+  static const String profileIcon = "${svgPath}profile_icon.svg";
+  static const String editSvg = "${svgPath}edit.svg";
+
 }

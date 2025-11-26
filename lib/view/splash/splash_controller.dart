@@ -12,7 +12,7 @@ class SplashController extends GetxController {
 
   void navigation() {
     if (!LocalStorage.accessToken.isNotEmpty) {
-      Get.offAllNamed(AppRoutes.loginScreen);
+      Get.offAllNamed(AppRoutes.registerScreen);
     } else {
       // Get.offAllNamed(AppRoutes.dashboardScreen);
     }
