@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
 import '../../exports.dart';
-import '../../view/auth/login/register_screen.dart';
+import '../../view/auth/register/register_screen.dart';
 import '../../view/splash/splash_screen.dart';
 
 class AppPages {
