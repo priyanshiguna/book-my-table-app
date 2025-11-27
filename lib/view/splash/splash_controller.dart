@@ -7,7 +7,9 @@ class SplashController extends GetxController {
   @override
   void onReady() {
     super.onReady();
-    navigation();
+    Future.delayed(Duration(seconds: 3), () {
+      navigation();
+    });
   }
 
   void navigation() {

@@ -21,7 +21,7 @@ class LoginScreen extends StatelessWidget {
         () => Scaffold(
           body: ListView(
             physics: RangeMaintainingScrollPhysics(),
-            padding: EdgeInsets.all(0).copyWith(top: MediaQuery.of(context).padding.top + (defaultPadding * 3)),
+            padding: EdgeInsets.all(0).copyWith(top: MediaQuery.of(context).padding.top + (defaultPadding * 4)),
             children: [
               Column(
                 children: [
@@ -35,20 +35,20 @@ class LoginScreen extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: AppTextStyle.titleStyle(context)?.copyWith(fontSize: 12.sp, height: 1.48, fontWeight: FontWeight.w400, color: customColors(context).textPrimaryBlack),
                   ),
-                  (defaultPadding * 1.5).verticalSpace,
+                  (defaultPadding * 3.5).verticalSpace,
 
                   /// Name Field
                   AppTextField(
-                    title: "Name",
-                    hintText: "Enter Name",
-                    padding: EdgeInsets.only(bottom: defaultPadding * 2.3),
+                    title: "Email",
+                    hintText: "Enter Email",
+                    padding: EdgeInsets.only(bottom: defaultPadding * 2),
                   ),
 
                   /// Confirm Password Field
                   AppTextField(
                     title: "Password",
                     hintText: "Enter Password",
-                    padding: EdgeInsets.only(bottom: defaultPadding * 1.6),
+                    padding: EdgeInsets.only(bottom: defaultPadding * 1.2),
                     obscureText: con.isPasswordVisible.value,
                     suffixIcon: UiUtils.togglePasswordIcon(
                       context,
@@ -61,12 +61,17 @@ class LoginScreen extends StatelessWidget {
                 ],
               ).paddingSymmetric(horizontal: defaultPadding),
 
-              Align(
-                alignment: Alignment.centerRight,
-                child: Text(
-                  "Forget Password ?",
-                  style: Theme.of(context).textTheme.titleMedium?.copyWith(color: customColors(context).whiteColor, fontSize: 14.sp, fontWeight: FontWeight.w500, decoration: TextDecoration.underline),
-                ).paddingOnly(right: defaultPadding, top: defaultPadding / 1.6, bottom: defaultPadding),
+              GestureDetector(
+                onTap: () {
+                  Get.toNamed(AppRoutes.forgotPasswordScreen);
+                },
+                child: Align(
+                  alignment: Alignment.centerRight,
+                  child: Text(
+                    "Forget Password ?",
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(color: customColors(context).whiteColor, fontSize: 14.sp, fontWeight: FontWeight.w500, decoration: TextDecoration.underline),
+                  ).paddingOnly(right: defaultPadding, top: defaultPadding / 1.6, bottom: defaultPadding / 5),
+                ),
               ),
 
               (defaultPadding * 1.8).verticalSpace,
@@ -75,6 +80,8 @@ class LoginScreen extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: defaultPadding),
                 onPressed: () {
                   FocusScope.of(context).unfocus();
+
+                  Get.toNamed(AppRoutes.completeProfileScreen);
                 },
               ).paddingOnly(bottom: defaultPadding * 2),
 

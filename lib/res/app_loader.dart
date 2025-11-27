@@ -92,7 +92,7 @@ class CircularLoader extends StatelessWidget {
     );
   }
 
-  getLoader(Color? color, BuildContext context) {
+  StatefulWidget getLoader(Color? color, BuildContext context) {
     if (Platform.isIOS) {
       return CupertinoActivityIndicator(color: color ?? Theme.of(context).primaryColor);
     } else {

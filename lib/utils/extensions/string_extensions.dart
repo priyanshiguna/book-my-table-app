@@ -442,7 +442,7 @@ extension StrExtension on String {
   /// ```
   String truncate(int maxLength) {
     if (length <= maxLength) return this;
-    return substring(0, maxLength) + '...';
+    return '${substring(0, maxLength)}...';
   }
 }
 

@@ -7,7 +7,7 @@ extension ColorExtension on Color {
   }
 
   Color contrastColor({bool reverse = false}) {
-    if (this.computeLuminance() < 0.5) {
+    if (computeLuminance() < 0.5) {
       return reverse == true ? Colors.black : Colors.white;
     } else {
       return reverse == true ? Colors.white : Colors.black;

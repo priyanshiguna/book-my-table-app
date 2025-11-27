@@ -21,7 +21,7 @@ class RegisterScreen extends StatelessWidget {
         () => Scaffold(
           body: ListView(
             physics: RangeMaintainingScrollPhysics(),
-            padding: EdgeInsets.all(0).copyWith(top: MediaQuery.of(context).padding.top + (defaultPadding * 3)),
+            padding: EdgeInsets.all(0).copyWith(top: MediaQuery.of(context).padding.top + (defaultPadding * 2)),
             children: [
               Column(
                 children: [
@@ -41,27 +41,42 @@ class RegisterScreen extends StatelessWidget {
                   AppTextField(
                     title: "Name",
                     hintText: "Enter Name",
-                    padding: EdgeInsets.only(bottom: defaultPadding * 2.3),
+                    padding: EdgeInsets.only(bottom: defaultPadding * 2),
+                  ),
+
+                  /// Email Field
+                  AppTextField(
+                    title: "Email",
+                    hintText: "Enter Email",
+                    padding: EdgeInsets.only(bottom: defaultPadding * 2),
                   ),
 
                   /// Password Field
                   AppTextField(
-                    title: "Email",
-                    hintText: "Enter Email",
-                    padding: EdgeInsets.only(bottom: defaultPadding * 2.3),
-                  ),
-
-                  /// Confirm Password Field
-                  AppTextField(
                     title: "Password",
                     hintText: "Enter Password",
-                    padding: EdgeInsets.only(bottom: defaultPadding * 1.6),
+                    padding: EdgeInsets.only(bottom: defaultPadding * 2),
                     obscureText: con.isPasswordVisible.value,
                     suffixIcon: UiUtils.togglePasswordIcon(
                       context,
                       con.isPasswordVisible.value,
                       onTap: () {
                         con.isPasswordVisible.value = !con.isPasswordVisible.value;
+                      },
+                    ),
+                  ),
+
+                  /// Confirm Password Field
+                  AppTextField(
+                    title: "Confirm Password",
+                    hintText: "Confirm Password",
+                    padding: EdgeInsets.only(bottom: defaultPadding * 1.2),
+                    obscureText: con.isConfirmPasswordVisible.value,
+                    suffixIcon: UiUtils.togglePasswordIcon(
+                      context,
+                      con.isConfirmPasswordVisible.value,
+                      onTap: () {
+                        con.isConfirmPasswordVisible.value = !con.isConfirmPasswordVisible.value;
                       },
                     ),
                   ),
@@ -95,7 +110,7 @@ class RegisterScreen extends StatelessWidget {
                 ],
               ).paddingOnly(left: defaultPadding / 2),
 
-              (defaultPadding * 1.8).verticalSpace,
+              (defaultPadding * 1.4).verticalSpace,
 
               AppButton(
                 title: "Sign Up",

@@ -101,15 +101,15 @@ class InlineMarkdownText extends StatelessWidget {
         final label = m.group(2)!;
         final url = m.group(3)!;
 
-        final handleTap = () {
+        void handleTap() {
           final cb = onTapLink ?? (String u) => _defaultTap(context, u);
           cb(url);
-        };
+        }
 
-        final handleLong = () {
+        void handleLong() {
           final cb = onLongPressLink ?? (String u) => _defaultLongPress(context, u);
           cb(url);
-        };
+        }
 
         if (autoLaunchLinks) {
           // Use WidgetSpan with GestureDetector to support tap + long press

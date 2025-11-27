@@ -480,7 +480,7 @@ class FieldTitleWidget extends StatelessWidget {
       padding: padding ?? EdgeInsets.zero,
       child: AnimatedDefaultTextStyle(
         duration: const Duration(milliseconds: 150),
-        style: titleStyle ?? Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 16.sp, fontWeight: FontWeight.w500, fontFamily: AppTheme.fontFamilyName, color: isFieldActive == true ? Theme.of(mainContext).primaryColor : AppColors.whiteColor),
+        style: titleStyle ?? Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 16.sp, fontWeight: FontWeight.w500, fontFamily: AppTheme.fontFamilyName, color: isFieldActive == true ? Theme.of(mainContext).primaryColor : customColors(context).kPrimaryColor),
         child: Text(title),
       ),
     );

@@ -3,6 +3,7 @@ import 'package:book_my_table_app/utils/extensions/color_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
@@ -32,7 +33,19 @@ class UiUtils {
     );
   }
 
-  static Widget backIcon() => const Icon(Icons.arrow_back, size: 25);
+
+  static Widget backIcon({VoidCallback? onPressed, Color? iconColor}) => Center(
+    child: AppIconButton(
+      size: 48,
+      icon: SvgPicture.asset(
+        AppAssets.backArrowIcon,
+        height: 20,
+        width: 20,
+        colorFilter: iconColor != null ? ColorFilter.mode(iconColor, BlendMode.srcIn) : null,
+      ),
+      onPressed: onPressed ?? () => Get.back(),
+    ),
+  );
 
   static Widget menuIcon() => const Icon(Icons.menu, size: 25);
 

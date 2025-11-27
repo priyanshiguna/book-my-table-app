@@ -52,4 +52,8 @@ class AppTextStyle {
         );
     // style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontSize: 16.sp, fontWeight: FontWeight.w500),
   }
+
+  static TextStyle? commonAppBarTitleStyle(BuildContext context) {
+    return Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 18.sp, fontWeight: FontWeight.w600,color: Theme.of(context).primaryColor);
+  }
 }
