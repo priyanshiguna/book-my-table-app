@@ -1,3 +1,4 @@
+import 'package:book_my_table_app/utils/extensions/color_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -46,7 +47,7 @@ class AppIconButton extends StatelessWidget {
       width: size,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        border: borderColor != null ? Border.all(color: borderColor!.withOpacity(withMyOpacity), width: borderWidth ?? 1.0) : null,
+        border: borderColor != null ? Border.all(color: borderColor!.withAppOpacity(withMyOpacity), width: borderWidth ?? 1.0) : null,
         boxShadow: boxShadow,
       ),
       child: GestureDetector(
@@ -56,7 +57,7 @@ class AppIconButton extends StatelessWidget {
           iconSize: size,
           splashRadius: size / 1.5,
           splashColor: splashColor,
-          padding: EdgeInsets.zero,
+          padding: .zero,
           tooltip: tooltip,
           style: IconButton.styleFrom(shadowColor: shadowColor),
           onPressed: disableButton == false
@@ -69,7 +70,7 @@ class AppIconButton extends StatelessWidget {
               : null,
           icon: ClipOval(
             child: Material(
-              color: backgroundColor?.withOpacity(withMyOpacity) ?? Colors.transparent,
+              color: backgroundColor?.withAppOpacity(withMyOpacity) ?? Colors.transparent,
               child: Center(child: icon),
             ),
           ),

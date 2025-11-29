@@ -46,7 +46,7 @@ Future<bool> getConnectivityResult({bool showToast = true, RxBool? isLoader}) as
   }
 }
 
-Future<void> launchUrlFunction(url, {String? errorMess}) async {
+Future<void> launchUrlFunction(String url, {String? errorMess}) async {
   try {
     if (!await launchUrl(Uri.parse(url), mode: Platform.isIOS ? LaunchMode.externalApplication : LaunchMode.externalNonBrowserApplication)) {
       throw Exception('Could not launch $url');

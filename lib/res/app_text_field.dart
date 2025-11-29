@@ -193,16 +193,16 @@ class _AppTextFieldState extends State<AppTextField> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: widget.padding ?? EdgeInsets.zero,
+      padding: widget.padding ?? .zero,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: .start,
         children: [
           Container(
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(defaultRadius)),
             child: Stack(
               children: [
                 Padding(
-                  padding: titleStatus ? EdgeInsets.only(top: 20.sp) : EdgeInsets.zero,
+                  padding: titleStatus ? .only(top: 20.sp) : .zero,
                   child: textFieldWidget(context),
                 ),
                 if (titleStatus) ...[
@@ -213,7 +213,7 @@ class _AppTextFieldState extends State<AppTextField> {
                       title: widget.title ?? "",
                       isFieldActive: widget.readOnly == true ? false : isFieldActive,
                       titleStyle: widget.titleStyle,
-                      padding: widget.titlePadding ?? const EdgeInsets.only(right: defaultPadding / 3, bottom: defaultPadding / 1.5),
+                      padding: widget.titlePadding ?? const .only(right: defaultPadding / 3, bottom: defaultPadding / 1.5),
                     ),
                   ),
                 ],
@@ -230,7 +230,7 @@ class _AppTextFieldState extends State<AppTextField> {
     return TextFormField(
       onTap: onTap,
       textAlign: widget.textAlign,
-      scrollPadding: widget.scrollPadding ?? const EdgeInsets.all(20),
+      scrollPadding: widget.scrollPadding ?? const .all(20),
       focusNode: (widget.focusNode ?? _focus),
       autofillHints: widget.autofillHints,
       autofocus: widget.autofocus ?? false,
@@ -326,7 +326,7 @@ class _AppTextFieldState extends State<AppTextField> {
       return Container(
         width: 50,
         height: 50,
-        margin: const EdgeInsets.only(right: 5),
+        margin: const .only(right: 5),
         child: Center(
           child: widget.suffixOnTap != null && child != null ? AppIconButton(size: 50, onPressed: widget.suffixOnTap!, icon: child) : child,
         ),
@@ -477,7 +477,7 @@ class FieldTitleWidget extends StatelessWidget {
   @override
   Widget build(context) {
     return Padding(
-      padding: padding ?? EdgeInsets.zero,
+      padding: padding ?? .zero,
       child: AnimatedDefaultTextStyle(
         duration: const Duration(milliseconds: 150),
         style: titleStyle ?? Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 16.sp, fontWeight: FontWeight.w500, fontFamily: AppTheme.fontFamilyName, color: isFieldActive == true ? Theme.of(mainContext).primaryColor : customColors(context).kPrimaryColor),
@@ -506,8 +506,8 @@ class FieldErrorWidget extends StatelessWidget {
       tween: validation == false ? Tween(begin: 0.0, end: (errorHeight ?? 18) + (errorSpacing ?? 5)) : Tween(begin: 0.0, end: 0.0),
       builder: (context, value, child) {
         return Container(
-          alignment: Alignment.topLeft,
-          padding: EdgeInsets.only(top: errorSpacing ?? 5, left: 10),
+          alignment: .topLeft,
+          padding: .only(top: errorSpacing ?? 5, left: 10),
           height: value * 1,
           child: Text(
             errorMessage ?? "",

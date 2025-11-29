@@ -41,14 +41,14 @@ class LoginScreen extends StatelessWidget {
                   AppTextField(
                     title: "Email",
                     hintText: "Enter Email",
-                    padding: EdgeInsets.only(bottom: defaultPadding * 2),
+                    padding: .only(bottom: defaultPadding * 2),
                   ),
 
                   /// Confirm Password Field
                   AppTextField(
                     title: "Password",
                     hintText: "Enter Password",
-                    padding: EdgeInsets.only(bottom: defaultPadding * 1.2),
+                    padding: .only(bottom: defaultPadding * 1.2),
                     obscureText: con.isPasswordVisible.value,
                     suffixIcon: UiUtils.togglePasswordIcon(
                       context,
@@ -66,7 +66,7 @@ class LoginScreen extends StatelessWidget {
                   Get.toNamed(AppRoutes.forgotPasswordScreen);
                 },
                 child: Align(
-                  alignment: Alignment.centerRight,
+                  alignment: .centerRight,
                   child: Text(
                     "Forget Password ?",
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(color: customColors(context).whiteColor, fontSize: 14.sp, fontWeight: FontWeight.w500, decoration: TextDecoration.underline),
@@ -77,7 +77,7 @@ class LoginScreen extends StatelessWidget {
               (defaultPadding * 1.8).verticalSpace,
               AppButton(
                 title: "Sign In",
-                padding: EdgeInsets.symmetric(horizontal: defaultPadding),
+                padding: .symmetric(horizontal: defaultPadding),
                 onPressed: () {
                   FocusScope.of(context).unfocus();
 
@@ -86,7 +86,7 @@ class LoginScreen extends StatelessWidget {
               ).paddingOnly(bottom: defaultPadding * 2),
 
               Padding(
-                padding: const EdgeInsets.only(bottom: defaultPadding / 2),
+                padding: const .only(bottom: defaultPadding / 2),
                 child: Row(
                   children: [
                     Expanded(child: UiUtils.divider(context)),
@@ -98,7 +98,7 @@ class LoginScreen extends StatelessWidget {
 
               Row(
                 spacing: defaultPadding * 1.4,
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: .center,
                 children: [
                   AppIconButton(
                     icon: SvgPicture.asset(AppAssets.appleSvg),
@@ -123,14 +123,14 @@ class LoginScreen extends StatelessWidget {
 
               /// Already have an account
               Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: .center,
                 children: [
                   Text(
                     "Create a new account?",
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(color: customColors(context).textPrimaryBlack, fontSize: 12.sp, fontWeight: FontWeight.w500),
                   ),
                   TextButton(
-                    style: ButtonStyle(padding: WidgetStateProperty.all(EdgeInsets.zero), tapTargetSize: MaterialTapTargetSize.shrinkWrap, enableFeedback: true),
+                    style: ButtonStyle(padding: WidgetStateProperty.all(.zero), tapTargetSize: MaterialTapTargetSize.shrinkWrap, enableFeedback: true),
                     child: Text(
                       " Sign Up",
                       style: Theme.of(context).textTheme.titleMedium?.copyWith(color: customColors(context).whiteColor, fontSize: 12.sp),

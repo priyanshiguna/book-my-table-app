@@ -17,7 +17,7 @@ class ForgotPasswordScreen extends StatelessWidget {
     return Scaffold(
       appBar: MyAppBar(),
       body: ListView(
-        padding: EdgeInsets.symmetric(horizontal: defaultPadding),
+        padding: .symmetric(horizontal: defaultPadding),
         children: [
           Text(
             "Forget Password",
@@ -40,7 +40,7 @@ class ForgotPasswordScreen extends StatelessWidget {
             validation: con.emailValidation.value,
             errorMessage: con.emailError.value,
             textInputAction: TextInputAction.done,
-            padding: EdgeInsets.only(bottom: UiUtils.appButtonHeight * 2),
+            padding: .only(bottom: UiUtils.appButtonHeight * 2),
           ),
 
           AppButton(

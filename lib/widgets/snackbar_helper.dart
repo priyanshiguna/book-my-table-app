@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:book_my_table_app/utils/extensions/color_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -67,23 +68,23 @@ class SnackBarHelper {
         SnackBar(
           duration: Duration(seconds: timeLimitInSecond.toInt()),
           // width: Get.width - defaultPadding * 2,
-          // padding: const EdgeInsets.symmetric(horizontal: defaultPadding),
+          // padding: const .symmetric(horizontal: defaultPadding),
           elevation: bottomSpacing == 0 ? 0 : null,
           margin:
               margin ??
-              EdgeInsets.fromLTRB(
+              .fromLTRB(
                 defaultPadding,
                 5.0,
                 defaultPadding,
                 (bottomSpacing ?? defaultPadding) + (bottomSafeArea ? MediaQuery.of(context).padding.bottom : 0),
               ),
-          padding: EdgeInsets.zero,
+          padding: .zero,
           onVisible: () {},
           behavior: SnackBarBehavior.floating,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(defaultRadius * 1.5)),
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           content: Container(
-            color: typeColor()?.withOpacity(.1),
+            color: typeColor()?.withAppOpacity(.1),
             child: Obx(
               () => ClipRRect(
                 clipBehavior: Clip.antiAlias,
@@ -121,10 +122,10 @@ class SnackBarHelper {
                       ),
                     ),
                     LinearPercentIndicator(
-                      padding: EdgeInsets.zero,
+                      padding: .zero,
                       percent: ((currentTimeLimit.value * 100) / timeLimitInSecond.value) / 100,
                       lineHeight: 4,
-                      backgroundColor: typeColor()?.withOpacity(.1),
+                      backgroundColor: typeColor()?.withAppOpacity(.1),
                       progressColor: typeColor(),
                       barRadius: const Radius.circular(5),
                     ),

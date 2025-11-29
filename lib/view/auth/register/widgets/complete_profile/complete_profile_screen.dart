@@ -35,20 +35,20 @@ class CompleteProfileScreen extends StatelessWidget {
 
               /// Profile Image
               Stack(
-                alignment: Alignment.bottomRight,
+                alignment: .bottomRight,
                 children: [
                   Container(
                     height: 100.h,
                     width: 100.h,
                     decoration: BoxDecoration(color: customColors(context).surfaceColor, shape: BoxShape.circle),
-                    padding: EdgeInsets.all(defaultPadding * 1.2),
+                    padding: .all(defaultPadding * 1.2),
                     child: SvgPicture.asset(AppAssets.profileIcon),
                   ),
 
                   Container(
                     height: 20.h,
                     width: 20.h,
-                    margin: EdgeInsets.only(right: 4.w, bottom: 4.h),
+                    margin: .only(right: 4.w, bottom: 4.h),
                     decoration: BoxDecoration(color: Theme.of(context).primaryColor, shape: BoxShape.circle),
                     child: Center(child: SvgPicture.asset(AppAssets.editSvg)),
                   ),
@@ -59,7 +59,7 @@ class CompleteProfileScreen extends StatelessWidget {
               AppTextField(
                 title: "Name",
                 hintText: "Enter Name",
-                padding: EdgeInsets.only(bottom: defaultPadding * 2.3),
+                padding: .only(bottom: defaultPadding * 2.3),
               ),
 
               /// Phone Number Field
@@ -69,7 +69,7 @@ class CompleteProfileScreen extends StatelessWidget {
                 textInputAction: TextInputAction.next,
                 keyboardType: TextInputType.numberWithOptions(),
                 prefixIcon: UiUtils.countryCodeWidget(),
-                padding: EdgeInsets.only(bottom: defaultPadding * 2.3),
+                padding: .only(bottom: defaultPadding * 2.3),
               ),
 
               /// Gender Field
@@ -78,8 +78,8 @@ class CompleteProfileScreen extends StatelessWidget {
                 hintText: "Select",
                 textInputAction: TextInputAction.next,
                 readOnly: true,
-                suffixIcon: Align(alignment: Alignment.bottomRight, child: SvgPicture.asset(AppAssets.downArrowSvg)).paddingOnly(bottom: defaultPadding / 1.5),
-                padding: EdgeInsets.only(bottom: defaultPadding * 2.3),
+                suffixIcon: Align(alignment: .bottomRight, child: SvgPicture.asset(AppAssets.downArrowSvg)).paddingOnly(bottom: defaultPadding / 1.5),
+                padding: .only(bottom: defaultPadding * 2.3),
               ),
             ],
           ).paddingSymmetric(horizontal: defaultPadding),
@@ -87,7 +87,7 @@ class CompleteProfileScreen extends StatelessWidget {
           (defaultPadding / 1.2).verticalSpace,
           AppButton(
             title: "Complete Profile",
-            padding: EdgeInsets.symmetric(horizontal: defaultPadding),
+            padding: .symmetric(horizontal: defaultPadding),
             onPressed: () {
               FocusScope.of(context).unfocus();
             },

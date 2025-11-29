@@ -70,7 +70,7 @@ class UiUtils {
     child: SizedBox(
       width: 40 + (AppTextStyle.textFieldStyle(Get.context!).fontSize ?? 0),
       child: Align(
-        alignment: Alignment.bottomLeft,
+        alignment: .bottomLeft,
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [

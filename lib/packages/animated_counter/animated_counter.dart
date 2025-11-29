@@ -17,7 +17,7 @@ class AnimatedFlipCounter extends StatelessWidget {
   final MainAxisAlignment mainAxisAlignment;
   final EdgeInsets padding;
 
-  const AnimatedFlipCounter({super.key, required this.value, this.duration = const Duration(milliseconds: 300), this.curve = Curves.linear, this.textStyle, this.prefix, this.suffix, this.fractionDigits = 0, this.wholeDigits = 1, this.thousandSeparator, this.decimalSeparator = '.', this.mainAxisAlignment = MainAxisAlignment.center, this.padding = EdgeInsets.zero}) : assert(fractionDigits >= 0, "fractionDigits must be non-negative"), assert(wholeDigits >= 0, "wholeDigits must be non-negative");
+  const AnimatedFlipCounter({super.key, required this.value, this.duration = const Duration(milliseconds: 300), this.curve = Curves.linear, this.textStyle, this.prefix, this.suffix, this.fractionDigits = 0, this.wholeDigits = 1, this.thousandSeparator, this.decimalSeparator = '.', this.mainAxisAlignment = .center, this.padding = .zero}) : assert(fractionDigits >= 0, "fractionDigits must be non-negative"), assert(wholeDigits >= 0, "wholeDigits must be non-negative");
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +79,7 @@ class AnimatedFlipCounter extends StatelessWidget {
               // Animate the negative sign (-) appear and disappearing
               duration: duration,
               tween: Tween(end: value < 0 ? 1.0 : 0.0),
-              builder: (_, double v, __) => Center(
+              builder: (_, double v, _) => Center(
                 widthFactor: v,
                 child: Opacity(opacity: v, child: const Text("-")),
               ),
@@ -114,7 +114,7 @@ class _SingleDigitFlipCounter extends StatelessWidget {
       tween: Tween(end: value),
       duration: duration,
       curve: curve,
-      builder: (_, double value, __) {
+      builder: (_, double value, _) {
         final whole = value ~/ 1;
         final decimal = value - whole;
         final w = size.width + padding.horizontal;
@@ -137,19 +137,25 @@ class _SingleDigitFlipCounter extends StatelessWidget {
   Widget _buildSingleDigit({required int digit, required double offset, required double opacity}) {
     // Try to avoid using the `Opacity` widget when possible, for performance.
     final Widget child;
-    if (color.withAppOpacity == 1) {
+    double clampedOpacity = opacity.clamp(0, 1);
+
+    if (color.a == 1.0) {
       // If the text style does not involve transparency, we can modify
       // the text color directly.
       child = Text(
         '$digit',
         textAlign: TextAlign.center,
-        style: TextStyle(color: color.withAppOpacity(opacity.clamp(0, 1))),
+        style: TextStyle(color: color.withAppOpacity(clampedOpacity)),
       );
     } else {
       // Otherwise, we have to use the `Opacity` widget (less performant).
       child = Opacity(
-        opacity: opacity.clamp(0, 1),
-        child: Text('$digit', textAlign: TextAlign.center),
+        opacity: clampedOpacity,
+        child: Text(
+          '$digit',
+          textAlign: TextAlign.center,
+          style: TextStyle(color: color),
+        ),
       );
     }
     return Positioned(left: 0, right: 0, bottom: offset + padding.bottom, child: child);
@@ -179,8 +185,8 @@ class AnimatedFlipCounter extends StatelessWidget {
     this.prefix,
     this.suffix,
     this.fractionDigits = 1,
-    this.mainAxisAlignment = MainAxisAlignment.center,
-    this.padding = EdgeInsets.zero,
+    this.mainAxisAlignment = .center,
+    this.padding = .zero,
   }) : assert(fractionDigits >= 0, "fractionDigits must be non-negative");
 
   // Format number into compact form with suffixes

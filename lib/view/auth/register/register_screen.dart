@@ -41,21 +41,21 @@ class RegisterScreen extends StatelessWidget {
                   AppTextField(
                     title: "Name",
                     hintText: "Enter Name",
-                    padding: EdgeInsets.only(bottom: defaultPadding * 2),
+                    padding: .only(bottom: defaultPadding * 2),
                   ),
 
                   /// Email Field
                   AppTextField(
                     title: "Email",
                     hintText: "Enter Email",
-                    padding: EdgeInsets.only(bottom: defaultPadding * 2),
+                    padding: .only(bottom: defaultPadding * 2),
                   ),
 
                   /// Password Field
                   AppTextField(
                     title: "Password",
                     hintText: "Enter Password",
-                    padding: EdgeInsets.only(bottom: defaultPadding * 2),
+                    padding: .only(bottom: defaultPadding * 2),
                     obscureText: con.isPasswordVisible.value,
                     suffixIcon: UiUtils.togglePasswordIcon(
                       context,
@@ -70,7 +70,7 @@ class RegisterScreen extends StatelessWidget {
                   AppTextField(
                     title: "Confirm Password",
                     hintText: "Confirm Password",
-                    padding: EdgeInsets.only(bottom: defaultPadding * 1.2),
+                    padding: .only(bottom: defaultPadding * 1.2),
                     obscureText: con.isConfirmPasswordVisible.value,
                     suffixIcon: UiUtils.togglePasswordIcon(
                       context,
@@ -114,7 +114,7 @@ class RegisterScreen extends StatelessWidget {
 
               AppButton(
                 title: "Sign Up",
-                padding: EdgeInsets.symmetric(horizontal: defaultPadding),
+                padding: .symmetric(horizontal: defaultPadding),
                 onPressed: () {
                   FocusScope.of(context).unfocus();
 
@@ -123,7 +123,7 @@ class RegisterScreen extends StatelessWidget {
               ).paddingOnly(bottom: defaultPadding * 2),
 
               Padding(
-                padding: const EdgeInsets.only(bottom: defaultPadding / 2),
+                padding: const .only(bottom: defaultPadding / 2),
                 child: Row(
                   children: [
                     Expanded(child: UiUtils.divider(context)),
@@ -135,7 +135,7 @@ class RegisterScreen extends StatelessWidget {
 
               Row(
                 spacing: defaultPadding * 1.4,
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: .center,
                 children: [
                   AppIconButton(
                     icon: SvgPicture.asset(AppAssets.appleSvg),
@@ -160,14 +160,14 @@ class RegisterScreen extends StatelessWidget {
 
               /// Already have an account
               Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: .center,
                 children: [
                   Text(
                     "Already have an account?",
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(color: customColors(context).textPrimaryBlack, fontSize: 12.sp, fontWeight: FontWeight.w500),
                   ),
                   TextButton(
-                    style: ButtonStyle(padding: WidgetStateProperty.all(EdgeInsets.zero), tapTargetSize: MaterialTapTargetSize.shrinkWrap, enableFeedback: true),
+                    style: ButtonStyle(padding: WidgetStateProperty.all(.zero), tapTargetSize: MaterialTapTargetSize.shrinkWrap, enableFeedback: true),
                     child: Text(
                       " Sign In",
                       style: Theme.of(context).textTheme.titleMedium?.copyWith(color: customColors(context).whiteColor, fontSize: 12.sp),

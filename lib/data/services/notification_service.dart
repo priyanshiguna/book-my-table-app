@@ -150,7 +150,7 @@ abstract class NotificationService {
     await flutterLocalNotificationsPlugin.cancel(id);
   }
 
-  static void navigation(payload, {required NotificationState state}) async {
+  static void navigation(dynamic payload, {required NotificationState state}) async {
     final Map<String, dynamic> newPay = payload.runtimeType == String ? jsonDecode(payload) : payload;
 
     debugPrint(newPay.toString());

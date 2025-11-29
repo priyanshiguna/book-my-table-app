@@ -1,3 +1,4 @@
+import 'package:book_my_table_app/utils/extensions/color_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shimmer/shimmer.dart';
@@ -13,8 +14,8 @@ class SimmerUtils {
       duration: const Duration(milliseconds: 300),
       child: isShowSimmer == true
           ? Shimmer.fromColors(
-              baseColor: baseColor ?? Theme.of(Get.context!).primaryColor.withOpacity(1),
-              highlightColor: highlightColor?.withOpacity(0.1) ?? Theme.of(Get.context!).primaryColor.withOpacity(0.2),
+              baseColor: baseColor ?? Theme.of(Get.context!).primaryColor.withAppOpacity(1),
+              highlightColor: highlightColor?.withAppOpacity(0.1) ?? Theme.of(Get.context!).primaryColor.withAppOpacity(0.2),
               child: child,
             )
           : child,
@@ -24,7 +25,7 @@ class SimmerUtils {
   static Container d({Color? color}) {
     return Container(
       height: 1,
-      color: color ?? Colors.white.withOpacity(0.2),
+      color: color ?? Colors.white.withAppOpacity(0.2),
     );
   }
 
@@ -34,7 +35,7 @@ class SimmerUtils {
         decoration: decoration ??
             BoxDecoration(
               borderRadius: BorderRadius.circular(borderRadius ?? 50),
-              color: Theme.of(Get.context!).primaryColor.withOpacity(0.1),
+              color: Theme.of(Get.context!).primaryColor.withAppOpacity(0.1),
             ),
       );
 }

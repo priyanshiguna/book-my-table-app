@@ -123,7 +123,7 @@ extension StrExtension on String {
     }
   }
 
-  static String todayDateCheck(dateTime, {String? pattern}) {
+  static String todayDateCheck(DateTime dateTime, {String? pattern}) {
     final DateTime date = dateTime;
     final DateTime now = DateTime.now();
     final DateTime today = DateTime(now.year, now.month, now.day);

@@ -18,7 +18,7 @@ class ChangePasswordScreen extends StatelessWidget {
       () => Scaffold(
         appBar: MyAppBar(),
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: defaultPadding),
+          padding: .symmetric(horizontal: defaultPadding),
           child: Column(
             children: [
               Text(
@@ -35,7 +35,7 @@ class ChangePasswordScreen extends StatelessWidget {
                 controller: con.newPasswordCon.value,
                 validation: con.newPasswordValidation.value,
                 errorMessage: con.newPasswordError.value,
-                padding: EdgeInsets.only(bottom: defaultPadding * 2),
+                padding: .only(bottom: defaultPadding * 2),
                 obscureText: con.isPasswordVisible.value,
                 suffixIcon: UiUtils.togglePasswordIcon(
                   context,
@@ -53,7 +53,7 @@ class ChangePasswordScreen extends StatelessWidget {
                 controller: con.confirmPasswordCon.value,
                 validation: con.confirmPasswordValidation.value,
                 errorMessage: con.confirmPasswordError.value,
-                padding: EdgeInsets.only(bottom: defaultPadding * 1.2),
+                padding: .only(bottom: defaultPadding * 1.2),
                 obscureText: con.isConfirmPasswordVisible.value,
                 suffixIcon: UiUtils.togglePasswordIcon(
                   context,
@@ -65,7 +65,7 @@ class ChangePasswordScreen extends StatelessWidget {
               ),
               AppButton(
                 title: "Submit",
-                padding: EdgeInsets.only(top: defaultPadding * 2.5),
+                padding: .only(top: defaultPadding * 2.5),
                 onPressed: () {
                   FocusScope.of(context).unfocus();
                 },
@@ -74,14 +74,14 @@ class ChangePasswordScreen extends StatelessWidget {
 
               /// Already have an account
               Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: .center,
                 children: [
                   Text(
                     "Already have an account?",
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(color: customColors(context).textPrimaryBlack, fontSize: 12.sp, fontWeight: FontWeight.w500),
                   ),
                   TextButton(
-                    style: ButtonStyle(padding: WidgetStateProperty.all(EdgeInsets.zero), tapTargetSize: MaterialTapTargetSize.shrinkWrap, enableFeedback: true),
+                    style: ButtonStyle(padding: WidgetStateProperty.all(.zero), tapTargetSize: MaterialTapTargetSize.shrinkWrap, enableFeedback: true),
                     child: Text(
                       " Sign In",
                       style: Theme.of(context).textTheme.titleMedium?.copyWith(color: customColors(context).whiteColor, fontSize: 12.sp),

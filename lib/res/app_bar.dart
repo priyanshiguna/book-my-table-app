@@ -60,7 +60,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: !isValEmpty(actions)
           ? [
               Padding(
-                padding: const EdgeInsets.only(right: defaultPadding / 1.7),
+                padding: const .only(right: defaultPadding / 1.7),
                 child: Row(children: actions!),
               ),
             ]

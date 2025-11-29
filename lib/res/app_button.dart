@@ -107,12 +107,12 @@ class _AppButtonState extends State<AppButton> {
                   duration: widget.duration ?? defaultDuration,
                   width: widget.flexibleWidth == false ? (widget.width?.w ?? Get.width + (widget.margin?.horizontal ?? 0)) : null,
                   height: widget.flexibleHeight == false ? (widget.height?.w ?? UiUtils.appButtonHight + (widget.margin?.vertical ?? 0)) : null,
-                  margin: widget.padding ?? EdgeInsets.zero,
+                  margin: widget.padding ?? .zero,
                   decoration: BoxDecoration(
                     borderRadius: widget.borderRadius ?? commonBorderRadius,
                     color: widget.color ?? (widget.buttonType == ButtonType.outline ? null : Theme.of(context).primaryColor.withAppOpacity(withMyOpacity)),
                     border: widget.buttonType == ButtonType.outline ? Border.all(color: widget.borderColor ?? Theme.of(context).primaryColor.withAppOpacity(disableOpacity)) : null,
-                    gradient: loadingOrDisableStatus ? (widget.buttonType == ButtonType.gradient ? (widget.gradient ?? LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: <Color>[Theme.of(context).primaryColor.withAppOpacity(.2), Theme.of(context).primaryColor, Theme.of(context).primaryColor, Theme.of(context).primaryColor.withAppOpacity(.2)])) : null) : null,
+                    gradient: loadingOrDisableStatus ? (widget.buttonType == ButtonType.gradient ? (widget.gradient ?? LinearGradient(begin: .topLeft, end: .bottomRight, colors: <Color>[Theme.of(context).primaryColor.withAppOpacity(.2), Theme.of(context).primaryColor, Theme.of(context).primaryColor, Theme.of(context).primaryColor.withAppOpacity(.2)])) : null) : null,
                   ),
                   child: RawMaterialButton(
                     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
@@ -142,7 +142,7 @@ class _AppButtonState extends State<AppButton> {
                         : null,
                     child: widget.loader == false
                         ? Padding(
-                            padding: widget.margin ?? EdgeInsets.zero,
+                            padding: widget.margin ?? .zero,
                             child: widget.child ?? (widget.flexibleWidth == true ? IntrinsicWidth(child: defaultChild(context)) : defaultChild(context)),
                           )
                         : FittedBox(child: CircularLoader(color: widget.loaderColor ?? (widget.buttonType == ButtonType.outline ? Theme.of(context).primaryColor.withAppOpacity(.7) : Theme.of(context).primaryColor.contrastColor()).withAppOpacity(.9))),
@@ -200,11 +200,11 @@ class _AppButtonState extends State<AppButton> {
   Widget imageWidget() {
     if (!isValEmpty(widget.image)) {
       return Row(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisSize: .min,
+        crossAxisAlignment: .center,
         children: [
           if (widget.imageAlign == ImageAlign.endTitle && !isValEmpty(widget.title)) SizedBox(width: widget.imageSpacing ?? 5),
-          GetUtils.isVector(widget.image!) ? SvgPicture.asset(widget.image!, height: widget.imageSize ?? 22, colorFilter: widget.imageColor != null ? ColorFilter.mode(widget.imageColor!, BlendMode.srcIn) : null, alignment: Alignment.bottomLeft) : Image.asset(widget.image!, height: widget.imageSize ?? 22, color: widget.imageColor, alignment: Alignment.bottomLeft),
+          GetUtils.isVector(widget.image!) ? SvgPicture.asset(widget.image!, height: widget.imageSize ?? 22, colorFilter: widget.imageColor != null ? ColorFilter.mode(widget.imageColor!, BlendMode.srcIn) : null, alignment: .bottomLeft) : Image.asset(widget.image!, height: widget.imageSize ?? 22, color: widget.imageColor, alignment: .bottomLeft),
           if (widget.imageAlign == ImageAlign.startTitle && !isValEmpty(widget.title)) SizedBox(width: widget.imageSpacing ?? 5),
         ],
       );
@@ -216,11 +216,11 @@ class _AppButtonState extends State<AppButton> {
   MainAxisAlignment titleMainAxisAlignment({required ImageAlign? imageAlign}) {
     switch (imageAlign) {
       case ImageAlign.start:
-        return MainAxisAlignment.spaceBetween;
+        return .spaceBetween;
       case ImageAlign.end:
-        return MainAxisAlignment.spaceBetween;
+        return .spaceBetween;
       default:
-        return MainAxisAlignment.center;
+        return .center;
     }
   }
 

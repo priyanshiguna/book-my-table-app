@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:ui';
 
+import 'package:book_my_table_app/utils/extensions/color_extensions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,10 +24,10 @@ class AppLoader extends StatelessWidget {
         child: BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
           child: Scaffold(
-            backgroundColor: Theme.of(context).scaffoldBackgroundColor.withOpacity(.2),
+            backgroundColor: Theme.of(context).scaffoldBackgroundColor.withAppOpacity(.2),
             body: Center(
               child: Container(
-                padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
+                padding: const .symmetric(vertical: 16, horizontal: 20),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
                   color: Theme.of(context).scaffoldBackgroundColor,
@@ -39,8 +40,8 @@ class AppLoader extends StatelessWidget {
                   ],
                 ),
                 child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: .min,
+                  mainAxisAlignment: .center,
                   children: [
                     SizedBox(
                       width: 24.w,
@@ -80,10 +81,10 @@ class CircularLoader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const .all(8.0),
       child: Center(
         child: Container(
-          margin: const EdgeInsets.symmetric(horizontal: 5),
+          margin: const .symmetric(horizontal: 5),
           width: Get.width * (width ?? 0.05),
           height: Get.width * (width ?? 0.05),
           child: getLoader(color, context),

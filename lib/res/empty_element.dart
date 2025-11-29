@@ -23,12 +23,12 @@ class EmptyElement extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: alignment ?? Alignment.center,
+      alignment: alignment ?? .center,
       child: Container(
         // height: height ?? Get.height * .4,
-        padding: padding ?? const EdgeInsets.only(bottom: defaultPadding),
+        padding: padding ?? const .only(bottom: defaultPadding),
         child: Column(
-          mainAxisAlignment: mainAxis ?? MainAxisAlignment.end,
+          mainAxisAlignment: mainAxis ?? .end,
           mainAxisSize: MainAxisSize.min,
           children: [
             // if (imageHeight != 0) ...[

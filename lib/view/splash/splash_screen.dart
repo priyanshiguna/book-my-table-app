@@ -24,7 +24,7 @@ class SplashScreen extends StatelessWidget {
           builder: (context, value, child) {
             return Center(
               child: Stack(
-                alignment: Alignment.center,
+                alignment: .center,
                 children: [
                   SvgPicture.asset(AppAssets.splashBg, height: Get.height),
                   AnimatedOpacity(opacity: value == 20 ? 0 : 1, duration: const Duration(milliseconds: 700), child: SvgPicture.asset(AppAssets.appLogoSvg, height: 100)),

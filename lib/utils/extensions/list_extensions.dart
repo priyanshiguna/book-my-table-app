@@ -1,6 +1,6 @@
 import 'dart:math';
 
-/// Extension that adds random picking utilities for List<T>.
+// Extension that adds random picking utilities for List<T>.
 extension RandomPick<T> on List<T> {
   /// Returns a random index from the list.
   ///
@@ -33,7 +33,7 @@ extension RandomPick<T> on List<T> {
   }
 }
 
-/// Extension with general safe and utility methods for List<T>.
+// Extension with general safe and utility methods for List<T>.
 extension ListHelpers<T> on List<T> {
   /// Returns `true` if the list is empty.
   bool get isNullOrEmpty => isEmpty;
