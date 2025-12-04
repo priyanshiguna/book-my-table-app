@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -22,30 +21,6 @@ bool isValEmpty(dynamic val) {
   return (val == null || value.isEmpty || value == "null" || value == "" || value == "NULL");
 }
 
-/// ------ To Check Internet Ability -------------------->>>
-ConnectivityResult? connectivityResult;
-final Connectivity connectivity = Connectivity();
-
-Future<bool> getConnectivityResult({bool showToast = true, RxBool? isLoader}) async {
-  try {
-    connectivityResult = await connectivity.checkConnectivity();
-    if (connectivityResult == ConnectivityResult.wifi || connectivityResult == ConnectivityResult.mobile) {
-      return true;
-    } else {
-      if (showToast == true) {
-        UiUtils.toast(AppStrings.noInternetAvailable);
-        isLoader?.value = false;
-      }
-      return false;
-    }
-  } on PlatformException catch (e) {
-    printErrors(type: "getConnectivityResult Function", errText: e);
-    UiUtils.toast(AppStrings.noInternetAvailable);
-    isLoader?.value = false;
-    return false;
-  }
-}
-
 Future<void> launchUrlFunction(String url, {String? errorMess}) async {
   try {
     if (!await launchUrl(Uri.parse(url), mode: Platform.isIOS ? LaunchMode.externalApplication : LaunchMode.externalNonBrowserApplication)) {
@@ -56,6 +31,19 @@ Future<void> launchUrlFunction(String url, {String? errorMess}) async {
       // SnackbarHelper.showOnChangeStatus(title: errorMess, snackbarType: SnackbarType.wrong);
     }
     printWarning("launchUrl Function");
+  }
+}
+
+bool isRegistered<S>({RxBool? isLoader}) {
+  if (Get.isRegistered<S>()) {
+    return true;
+  } else {
+    printErrors(type: "Function 'isRegistered' in utils:", errText: "$S Controller not initialize");
+    /* if (forcePut == true) {
+      printData(key: "Force Putting", value: "Controller $S");
+    } */
+    isLoader?.value = false;
+    return false;
   }
 }
 
@@ -91,6 +79,13 @@ Future<void> deleteCacheDir() async {
 extension StringExtension on String {
   String capitalize() {
     return "${this[0].toUpperCase()}${substring(1)}";
+  }
+}
+
+extension ColorExtension on Color {
+  Color withCtmOpacity(double opacity) {
+    assert(opacity >= 0.0 && opacity <= 1.0);
+    return withAlpha((255.0 * opacity).round());
   }
 }
 

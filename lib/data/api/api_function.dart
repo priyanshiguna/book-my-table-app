@@ -1,3 +1,4 @@
+import 'package:book_my_table_app/controller/network_controller.dart';
 import 'package:dio/dio.dart' as dio;
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';

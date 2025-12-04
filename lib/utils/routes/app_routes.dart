@@ -8,4 +8,6 @@ class AppRoutes {
   static const String changePasswordScreen = '/CHANGE_PASSWORD_SCREEN';
   static const String forgotPasswordScreen = '/FORGOT_PASSWORD_SCREEN';
   static const String verifyCodeScreen = '/VERIFY_CODE_SCREEN';
+
+  static const String bottombarScreen = '/BOTTOMBAR_SCREEN';
 }

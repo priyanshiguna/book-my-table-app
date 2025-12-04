@@ -1,6 +1,7 @@
-import 'package:book_my_table_app/view/auth/login/widgets/verify_code/verify_code_screen.dart';
 import 'package:book_my_table_app/view/auth/login/widgets/change_password/change_password_screen.dart';
+import 'package:book_my_table_app/view/auth/login/widgets/verify_code/verify_code_screen.dart';
 import 'package:book_my_table_app/view/auth/register/widgets/complete_profile/complete_profile_screen.dart';
+import 'package:book_my_table_app/view/bottombar/bottombar_screen.dart';
 import 'package:get/get.dart';
 
 import '../../exports.dart';
@@ -20,5 +21,7 @@ class AppPages {
     GetPage(name: AppRoutes.changePasswordScreen, page: () => ChangePasswordScreen()),
     GetPage(name: AppRoutes.forgotPasswordScreen, page: () => ForgotPasswordScreen()),
     GetPage(name: AppRoutes.verifyCodeScreen, page: () => VerifyCodeScreen()),
+
+    GetPage(name: AppRoutes.bottombarScreen, page: () => BottombarScreen()),
   ];
 }

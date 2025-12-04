@@ -90,6 +90,7 @@ class CompleteProfileScreen extends StatelessWidget {
             padding: .symmetric(horizontal: defaultPadding),
             onPressed: () {
               FocusScope.of(context).unfocus();
+              Get.offAllNamed(AppRoutes.bottombarScreen);
             },
           ).paddingOnly(bottom: defaultPadding * 2),
         ],
