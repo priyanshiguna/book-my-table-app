@@ -20,6 +20,9 @@ class AppAssets {
   static const String editSvg = "${svgPath}edit.svg";
   static const String backArrowIcon = "${svgPath}back_arrow.svg";
 
+    static const String doneSmall = "${svgPath}done_small.svg";
+
+
   //* Bottom Bar Icons
   static const String homeIcon = "${svgPath}home_icon.svg";
   static const String homeSelectedIcon = "${svgPath}home_selected_icon.svg";

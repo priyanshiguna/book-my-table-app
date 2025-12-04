@@ -66,6 +66,39 @@ Future<PackageInfo> getPackageInfo() async {
   return packageInfo;
 }
 
+Rx<OverlayEntry?> overlayEntry = Rx<OverlayEntry?>(null);
+
+RxBool isOverlayOpen = false.obs;
+
+void showOverlay(BuildContext context, {required Widget child, VoidCallback? onShow, VoidCallback? onClose}) {
+  if (overlayEntry.value == null) {
+    overlayEntry.value = OverlayEntry(
+      canSizeOverlay: true,
+      builder: (context) => child,
+    );
+    Overlay.of(context).insert(overlayEntry.value!);
+    isOverlayOpen.value = true;
+
+    if (onShow != null) {
+      onShow();
+    }
+  } else {
+    isOverlayOpen.value = false;
+  }
+}
+
+void removeOverlay({VoidCallback? onRemove}) {
+  if (overlayEntry.value != null) {
+    overlayEntry.value?.remove();
+    overlayEntry.value = null;
+    isOverlayOpen.value = false;
+
+    if (onRemove != null) {
+      onRemove();
+    }
+  }
+}
+
 UnsupportedError get platformUnsupportedError => UnsupportedError("Sorry, this app is Android and iOS so it does not support another platform.");
 
 Future<void> deleteCacheDir() async {
