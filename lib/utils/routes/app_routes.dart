@@ -7,4 +7,5 @@ class AppRoutes {
   static const String completeProfileScreen = '/COMPLETE_PROFILE_SCREEN';
   static const String changePasswordScreen = '/CHANGE_PASSWORD_SCREEN';
   static const String forgotPasswordScreen = '/FORGOT_PASSWORD_SCREEN';
+  static const String verifyCodeScreen = '/VERIFY_CODE_SCREEN';
 }

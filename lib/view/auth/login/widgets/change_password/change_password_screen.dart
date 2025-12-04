@@ -1,5 +1,5 @@
 import 'package:book_my_table_app/res/app_bar.dart';
-import 'package:book_my_table_app/view/auth/register/widgets/change_password/change_password_controller.dart';
+import 'package:book_my_table_app/view/auth/login/widgets/change_password/change_password_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -68,6 +68,7 @@ class ChangePasswordScreen extends StatelessWidget {
                 padding: .only(top: defaultPadding * 2.5),
                 onPressed: () {
                   FocusScope.of(context).unfocus();
+                  Get.offAllNamed(AppRoutes.loginScreen);
                 },
               ).paddingOnly(bottom: defaultPadding * 2),
               Spacer(),
