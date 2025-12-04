@@ -1,4 +1,5 @@
 import 'package:book_my_table_app/res/app_custom_color.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -25,9 +26,21 @@ class RegisterScreen extends StatelessWidget {
             children: [
               Column(
                 children: [
-                  Text(
-                    "Create Account",
-                    style: AppTextStyle.titleStyle(context)?.copyWith(fontSize: 20.sp, color: customColors(context).whiteColor),
+                  GestureDetector(
+                    onTap: () {
+                      if (kDebugMode) {
+                        con.nameCon.value.text = "Me";
+                        con.emailCon.value.text = "me@gmail.com";
+                        con.passwordCon.value.text = "123456";
+                        con.confirmPasswordCon.value.text = "123456";
+                        con.agreeToTerms.value = true;
+                        con.checkDisableButton();
+                      }
+                    },
+                    child: Text(
+                      "Create Account",
+                      style: AppTextStyle.titleStyle(context)?.copyWith(fontSize: 20.sp, color: customColors(context).whiteColor),
+                    ),
                   ),
                   (defaultPadding / 1.2).verticalSpace,
                   Text(

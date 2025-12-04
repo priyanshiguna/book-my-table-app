@@ -1,4 +1,5 @@
 import 'package:book_my_table_app/res/app_custom_color.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -25,9 +26,18 @@ class LoginScreen extends StatelessWidget {
             children: [
               Column(
                 children: [
-                  Text(
-                    "Welcome Back",
-                    style: AppTextStyle.titleStyle(context)?.copyWith(fontSize: 20.sp, color: customColors(context).whiteColor),
+                  GestureDetector(
+                    onTap: () {
+                      if (kDebugMode) {
+                        con.emailCon.value.text = "test@gmail.com";
+                        con.passwordCon.value.text = "123456";
+                        con.checkDisableButton();
+                      }
+                    },
+                    child: Text(
+                      "Welcome Back",
+                      style: AppTextStyle.titleStyle(context)?.copyWith(fontSize: 20.sp, color: customColors(context).whiteColor),
+                    ),
                   ),
                   (defaultPadding / 1.2).verticalSpace,
                   Text(

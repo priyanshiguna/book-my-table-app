@@ -64,7 +64,7 @@ Future<void> showCommonOverlay<T>(
           child: SizedBox(height: Get.height, width: Get.width),
         ),
         Positioned(
-          top: showAbove ? position.dy - (defaultPadding) : position.dy + widgetHeight + (topPadding ?? defaultPadding / 2),
+          top: showAbove ? position.dy - (defaultPadding) : position.dy + (widgetHeight - (defaultPadding * 1.4)) + (topPadding ?? defaultPadding / 2),
           right: defaultPadding,
 
           left: width != null
@@ -202,9 +202,9 @@ class AppOverlaySelectionState<T> extends State<AppOverlaySelection<T>> {
         padding: widget.padding ?? const EdgeInsets.symmetric(vertical: defaultPadding),
         margin: const EdgeInsets.only(bottom: defaultPadding),
         decoration: BoxDecoration(
-          color: Theme.of(context).scaffoldBackgroundColor,
+          color: customColors(context).surfaceColor,
           borderRadius: BorderRadius.circular(defaultRadius),
-          boxShadow: [BoxShadow(color: Colors.black.withAlpha(25), blurRadius: 20, spreadRadius: 0, offset: const Offset(0, 3))],
+          // boxShadow: [BoxShadow(color: customColors(context).kPrimaryColor.withCtmOpacity(.5), blurRadius: 10, spreadRadius: 0, offset: const Offset(0, 3))],
         ),
         child:
             widget.child ??
@@ -266,8 +266,8 @@ class AppOverlaySelectionState<T> extends State<AppOverlaySelection<T>> {
                                     style: (isSelected
                                         ? (widget.radioButtonType == null)
                                               ? Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp, color: Theme.of(context).primaryColor)
-                                              : Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600, fontSize: 14.sp)
-                                        : Theme.of(context).textTheme.titleMedium?.copyWith(fontSize: 14.sp, fontWeight: FontWeight.w500)),
+                                              : Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600, fontSize: 14.sp, color: customColors(context).whiteColor)
+                                        : Theme.of(context).textTheme.titleMedium?.copyWith(fontSize: 14.sp, fontWeight: FontWeight.w500, color: customColors(context).whiteColor)),
                                   ),
                                   trailing: (widget.radioButtonType != null)
                                       ? IntrinsicWidth(

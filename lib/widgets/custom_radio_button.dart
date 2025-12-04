@@ -41,7 +41,7 @@ class CustomRadioButton extends StatelessWidget {
       style: titleStyle ??
           Theme.of(context).textTheme.bodyMedium!.copyWith(
                 fontWeight: isSelected.isTrue ? FontWeight.w600 : FontWeight.w500,
-                color: Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(isSelected.isTrue ? 1 : 0.4),
+                color: Theme.of(context).textTheme.bodyMedium?.color?.withCtmOpacity(isSelected.isTrue ? 1 : 0.4),
                 fontSize: 14.sp,
               ),
       child: Text(title ?? ""),

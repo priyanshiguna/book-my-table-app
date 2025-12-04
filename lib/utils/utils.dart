@@ -72,10 +72,7 @@ RxBool isOverlayOpen = false.obs;
 
 void showOverlay(BuildContext context, {required Widget child, VoidCallback? onShow, VoidCallback? onClose}) {
   if (overlayEntry.value == null) {
-    overlayEntry.value = OverlayEntry(
-      canSizeOverlay: true,
-      builder: (context) => child,
-    );
+    overlayEntry.value = OverlayEntry(canSizeOverlay: true, builder: (context) => child);
     Overlay.of(context).insert(overlayEntry.value!);
     isOverlayOpen.value = true;
 
