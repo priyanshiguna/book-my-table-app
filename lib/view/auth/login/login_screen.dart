@@ -42,6 +42,13 @@ class LoginScreen extends StatelessWidget {
                     title: "Email",
                     hintText: "Enter Email",
                     padding: .only(bottom: defaultPadding * 2),
+                    controller: con.emailCon.value,
+                    validation: con.emailValidation.value,
+                    errorMessage: con.emailError.value,
+                    onChanged: (_) {
+                      con.emailValidation.value = true;
+                      con.checkDisableButton();
+                    },
                   ),
 
                   /// Confirm Password Field
@@ -57,6 +64,13 @@ class LoginScreen extends StatelessWidget {
                         con.isPasswordVisible.value = !con.isPasswordVisible.value;
                       },
                     ),
+                    controller: con.passwordCon.value,
+                    validation: con.passwordValidation.value,
+                    errorMessage: con.passwordError.value,
+                    onChanged: (_) {
+                      con.passwordValidation.value = true;
+                      con.checkDisableButton();
+                    },
                   ),
                 ],
               ).paddingSymmetric(horizontal: defaultPadding),
@@ -75,13 +89,18 @@ class LoginScreen extends StatelessWidget {
               ),
 
               (defaultPadding * 1.8).verticalSpace,
+
+              //* Login CTA
               AppButton(
                 title: "Sign In",
+                disableButton: con.disableButton.value,
                 padding: .symmetric(horizontal: defaultPadding),
                 onPressed: () {
                   FocusScope.of(context).unfocus();
 
-                  Get.toNamed(AppRoutes.completeProfileScreen);
+                  if (con.validate()) {
+                    Get.toNamed(AppRoutes.completeProfileScreen);
+                  }
                 },
               ).paddingOnly(bottom: defaultPadding * 2),
 
@@ -121,7 +140,7 @@ class LoginScreen extends StatelessWidget {
                 ],
               ).paddingSymmetric(vertical: defaultPadding),
 
-              /// Already have an account
+              //* Already have an account
               Row(
                 mainAxisAlignment: .center,
                 children: [

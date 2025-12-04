@@ -507,7 +507,7 @@ class FieldErrorWidget extends StatelessWidget {
       builder: (context, value, child) {
         return Container(
           alignment: .topLeft,
-          padding: .only(top: errorSpacing ?? 5, left: 10),
+          padding: .only(top: errorSpacing ?? 5),
           height: value * 1,
           child: Text(
             errorMessage ?? "",

@@ -41,6 +41,15 @@ class RegisterScreen extends StatelessWidget {
                   AppTextField(
                     title: "Name",
                     hintText: "Enter Name",
+                    controller: con.nameCon.value,
+                    validation: con.nameValidation.value,
+                    errorMessage: con.nameError.value,
+                    onChanged: (_) {
+                      con.nameValidation.value = true;
+                      con.nameCon.refresh();
+
+                      con.checkDisableButton();
+                    },
                     padding: .only(bottom: defaultPadding * 2),
                   ),
 
@@ -49,6 +58,15 @@ class RegisterScreen extends StatelessWidget {
                     title: "Email",
                     hintText: "Enter Email",
                     padding: .only(bottom: defaultPadding * 2),
+                    controller: con.emailCon.value,
+                    validation: con.emailValidation.value,
+                    errorMessage: con.emailError.value,
+                    onChanged: (_) {
+                      con.emailValidation.value = true;
+                      con.emailCon.refresh();
+
+                      con.checkDisableButton();
+                    },
                   ),
 
                   /// Password Field
@@ -64,6 +82,15 @@ class RegisterScreen extends StatelessWidget {
                         con.isPasswordVisible.value = !con.isPasswordVisible.value;
                       },
                     ),
+                    controller: con.passwordCon.value,
+                    validation: con.passwordValidation.value,
+                    errorMessage: con.passwordError.value,
+                    onChanged: (_) {
+                      con.passwordValidation.value = true;
+                      con.passwordCon.refresh();
+
+                      con.checkDisableButton();
+                    },
                   ),
 
                   /// Confirm Password Field
@@ -79,6 +106,15 @@ class RegisterScreen extends StatelessWidget {
                         con.isConfirmPasswordVisible.value = !con.isConfirmPasswordVisible.value;
                       },
                     ),
+                    controller: con.confirmPasswordCon.value,
+                    validation: con.confirmPasswordValidation.value,
+                    errorMessage: con.confirmPasswordError.value,
+                    onChanged: (_) {
+                      con.confirmPasswordValidation.value = true;
+                      con.confirmPasswordCon.refresh();
+
+                      con.checkDisableButton();
+                    },
                   ),
                 ],
               ).paddingSymmetric(horizontal: defaultPadding),
@@ -95,6 +131,7 @@ class RegisterScreen extends StatelessWidget {
                       checkColor: Theme.of(context).scaffoldBackgroundColor,
                       onChanged: (val) {
                         con.agreeToTerms.value = !con.agreeToTerms.value;
+                        con.checkDisableButton();
                       },
                     ),
                   ),
@@ -112,13 +149,17 @@ class RegisterScreen extends StatelessWidget {
 
               (defaultPadding * 1.4).verticalSpace,
 
+              //* Sign Up CTA
               AppButton(
                 title: "Sign Up",
+                disableButton: con.disableButton.value,
                 padding: .symmetric(horizontal: defaultPadding),
                 onPressed: () {
                   FocusScope.of(context).unfocus();
 
-                  Get.toNamed(AppRoutes.completeProfileScreen);
+                  if (con.validate()) {
+                    Get.toNamed(AppRoutes.completeProfileScreen);
+                  }
                 },
               ).paddingOnly(bottom: defaultPadding * 2),
 
@@ -133,6 +174,7 @@ class RegisterScreen extends StatelessWidget {
                 ),
               ),
 
+              //* Social Login
               Row(
                 spacing: defaultPadding * 1.4,
                 mainAxisAlignment: .center,

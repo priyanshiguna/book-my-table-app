@@ -30,11 +30,11 @@ class ChangePasswordScreen extends StatelessWidget {
 
               /// New Password
               AppTextField(
-                title: "Password",
-                hintText: "Enter Password",
-                controller: con.newPasswordCon.value,
-                validation: con.newPasswordValidation.value,
-                errorMessage: con.newPasswordError.value,
+                title: "New Password",
+                hintText: "Enter New Password",
+                controller: con.passwordCon.value,
+                validation: con.passwordValidation.value,
+                errorMessage: con.passwordError.value,
                 padding: .only(bottom: defaultPadding * 2),
                 obscureText: con.isPasswordVisible.value,
                 suffixIcon: UiUtils.togglePasswordIcon(
@@ -44,6 +44,10 @@ class ChangePasswordScreen extends StatelessWidget {
                     con.isPasswordVisible.value = !con.isPasswordVisible.value;
                   },
                 ),
+                onChanged: (value) {
+                  con.passwordValidation.value = true;
+                  con.checkDisableButton();
+                },
               ),
 
               /// Confirm Password
@@ -62,13 +66,21 @@ class ChangePasswordScreen extends StatelessWidget {
                     con.isConfirmPasswordVisible.value = !con.isConfirmPasswordVisible.value;
                   },
                 ),
+                onChanged: (value) {
+                  con.confirmPasswordValidation.value = true;
+                  con.checkDisableButton();
+                },
               ),
               AppButton(
                 title: "Submit",
+                disableButton: con.disableButton.value,
                 padding: .only(top: defaultPadding * 2.5),
                 onPressed: () {
                   FocusScope.of(context).unfocus();
-                  Get.offAllNamed(AppRoutes.loginScreen);
+
+                  if (con.validate()) {
+                    Get.offAllNamed(AppRoutes.loginScreen);
+                  }
                 },
               ).paddingOnly(bottom: defaultPadding * 2),
               Spacer(),
