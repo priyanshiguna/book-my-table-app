@@ -125,11 +125,13 @@ class CompleteProfileScreen extends StatelessWidget {
             (defaultPadding / 1.2).verticalSpace,
             AppButton(
               title: "Complete Profile",
-              disableButton: con.disableButton.value,
+              // disableButton: con.disableButton.value,
               padding: .symmetric(horizontal: defaultPadding),
               onPressed: () {
                 FocusScope.of(context).unfocus();
 
+                //? Temp Navigation
+                Get.offAndToNamed(AppRoutes.bottombarScreen);
                 if (con.validate()) {}
               },
             ).paddingOnly(bottom: defaultPadding * 2),

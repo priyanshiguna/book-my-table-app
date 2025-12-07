@@ -23,8 +23,8 @@ class AppTheme {
       splashFactory: InkRipple.splashFactory,
       canvasColor: Colors.white,
       disabledColor: const Color(0xFFD3D9DD),
-      textTheme: buildTextTheme(base: ThemeData.light().textTheme),
-      primaryTextTheme: buildTextTheme(base: ThemeData.light().primaryTextTheme),
+      textTheme: buildTextTheme(base: ThemeData.light().textTheme, myFontFamily: fontFamilyName),
+      primaryTextTheme: buildTextTheme(base: ThemeData.light().primaryTextTheme, myFontFamily: fontFamilyName),
       radioTheme: RadioThemeData(fillColor: WidgetStateProperty.all(AppColors.kPrimaryColor)),
 
       /// **Theme Extension for Custom Colors**
@@ -88,8 +88,8 @@ class AppTheme {
       splashFactory: InkRipple.splashFactory,
       canvasColor: AppColors.backgroundDark,
       disabledColor: const Color(0xFFCCCCCC),
-      textTheme: buildTextTheme(base: ThemeData.dark().textTheme),
-      primaryTextTheme: buildTextTheme(base: ThemeData.dark().primaryTextTheme),
+      textTheme: buildTextTheme(base: ThemeData.dark().textTheme, myFontFamily: fontFamilyName),
+      primaryTextTheme: buildTextTheme(base: ThemeData.dark().primaryTextTheme, myFontFamily: fontFamilyName),
       radioTheme: RadioThemeData(fillColor: WidgetStateProperty.all(AppColors.kPrimaryColor)),
 
       /// **Theme Extension for Custom Colors**

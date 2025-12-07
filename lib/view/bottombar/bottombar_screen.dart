@@ -17,7 +17,7 @@ class BottombarScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: UiUtils.systemUiOverlayStyle(systemNavigationBarColor: Theme.of(context).scaffoldBackgroundColor).copyWith(systemNavigationBarDividerColor: Theme.of(context).dividerTheme.color),
+      value: UiUtils.systemUiOverlayStyle(isReverse: true, systemNavigationBarColor: Theme.of(context).primaryColor),
       child: Obx(
         () => PopScope(
           canPop: BottombarTab.values.first == con.selectedBottomTab.value,

@@ -33,16 +33,10 @@ class UiUtils {
     );
   }
 
-
   static Widget backIcon({VoidCallback? onPressed, Color? iconColor}) => Center(
     child: AppIconButton(
       size: 48,
-      icon: SvgPicture.asset(
-        AppAssets.backArrowIcon,
-        height: 20,
-        width: 20,
-        colorFilter: iconColor != null ? ColorFilter.mode(iconColor, BlendMode.srcIn) : null,
-      ),
+      icon: SvgPicture.asset(AppAssets.backArrowIcon, height: 20, width: 20, colorFilter: iconColor != null ? ColorFilter.mode(iconColor, BlendMode.srcIn) : null),
       onPressed: onPressed ?? () => Get.back(),
     ),
   );
