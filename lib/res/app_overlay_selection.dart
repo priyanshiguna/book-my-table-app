@@ -1,5 +1,3 @@
-import 'package:book_my_table_app/res/app_custom_color.dart';
-import 'package:book_my_table_app/widgets/custom_radio_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,6 +5,8 @@ import 'package:get/get.dart';
 
 import '../exports.dart';
 import '../utils/common_enums.dart';
+import '../widgets/custom_radio_button.dart';
+import 'app_custom_color.dart';
 
 Future<void> showCommonOverlay<T>(
   BuildContext context, {
@@ -40,10 +40,10 @@ Future<void> showCommonOverlay<T>(
   final double spaceBelow = screenHeight - position.dy - widgetHeight;
   final double spaceAbove = position.dy;
 
-  bool showAbove = spaceBelow < 100 && spaceAbove > spaceBelow;
+  final bool showAbove = spaceBelow < 100 && spaceAbove > spaceBelow;
 
   // Determine item count based on provided items (not global accounts list)
-  int itemCount = (items?.length ?? 0);
+  final int itemCount = (items?.length ?? 0);
 
   double overlayHeight = (height ?? (itemCount * 50.0 + (itemSpacing ?? 0))) + (padding?.vertical ?? 0);
 

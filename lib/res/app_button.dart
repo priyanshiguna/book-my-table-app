@@ -1,5 +1,3 @@
-import 'package:book_my_table_app/res/app_custom_color.dart';
-import 'package:book_my_table_app/utils/extensions/color_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,6 +7,8 @@ import 'package:get/get.dart';
 import '../exports.dart';
 import '../packages/marquee_widget/marquee_widget.dart';
 import '../utils/common_enums.dart';
+import '../utils/extensions/color_extensions.dart';
+import 'app_custom_color.dart';
 
 class AppButton extends StatefulWidget {
   final ButtonType? buttonType;

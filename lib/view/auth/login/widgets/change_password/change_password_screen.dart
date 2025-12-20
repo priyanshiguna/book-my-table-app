@@ -1,11 +1,11 @@
-import 'package:book_my_table_app/res/app_bar.dart';
-import 'package:book_my_table_app/view/auth/login/widgets/change_password/change_password_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../../../exports.dart';
+import '../../../../../res/app_bar.dart';
 import '../../../../../res/app_custom_color.dart';
+import 'change_password_controller.dart';
 
 class ChangePasswordScreen extends StatelessWidget {
   ChangePasswordScreen({super.key});
@@ -18,7 +18,7 @@ class ChangePasswordScreen extends StatelessWidget {
       () => Scaffold(
         appBar: MyAppBar(),
         body: Padding(
-          padding: .symmetric(horizontal: defaultPadding),
+          padding: const .symmetric(horizontal: defaultPadding),
           child: Column(
             children: [
               Text(
@@ -35,7 +35,7 @@ class ChangePasswordScreen extends StatelessWidget {
                 controller: con.passwordCon.value,
                 validation: con.passwordValidation.value,
                 errorMessage: con.passwordError.value,
-                padding: .only(bottom: defaultPadding * 2),
+                padding: const .only(bottom: defaultPadding * 2),
                 obscureText: con.isPasswordVisible.value,
                 suffixIcon: UiUtils.togglePasswordIcon(
                   context,
@@ -57,7 +57,7 @@ class ChangePasswordScreen extends StatelessWidget {
                 controller: con.confirmPasswordCon.value,
                 validation: con.confirmPasswordValidation.value,
                 errorMessage: con.confirmPasswordError.value,
-                padding: .only(bottom: defaultPadding * 1.2),
+                padding: const .only(bottom: defaultPadding * 1.2),
                 obscureText: con.isConfirmPasswordVisible.value,
                 suffixIcon: UiUtils.togglePasswordIcon(
                   context,
@@ -74,7 +74,7 @@ class ChangePasswordScreen extends StatelessWidget {
               AppButton(
                 title: "Submit",
                 disableButton: con.disableButton.value,
-                padding: .only(top: defaultPadding * 2.5),
+                padding: const .only(top: defaultPadding * 2.5),
                 onPressed: () {
                   FocusScope.of(context).unfocus();
 
@@ -83,7 +83,7 @@ class ChangePasswordScreen extends StatelessWidget {
                   }
                 },
               ).paddingOnly(bottom: defaultPadding * 2),
-              Spacer(),
+              const Spacer(),
 
               /// Already have an account
               Row(

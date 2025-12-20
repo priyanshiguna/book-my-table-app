@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 
 class AppStrings {
+  AppStrings._();
+
   /// HOW TO USE: Text(AppStrings.appName);
 
   static RxString appName = "".obs; //? This Variable fill in BaseController

@@ -1,11 +1,11 @@
 import 'package:animations/animations.dart';
-import 'package:book_my_table_app/res/app_custom_color.dart';
-import 'package:book_my_table_app/view/bottombar/bottombar_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import '../../exports.dart';
+import '../../res/app_custom_color.dart';
+import 'bottombar_controller.dart';
 import 'components/bottombar_tile.dart';
 import 'enum/bottombar_enum.dart';
 
@@ -40,8 +40,8 @@ class BottombarScreen extends StatelessWidget {
               elevation: 35,
               shadowColor: customColors(context).textPrimaryBlack,
               color: customColors(context).surfaceColor,
-              padding: EdgeInsets.symmetric(horizontal: 4),
-              shape: AutomaticNotchedShape(RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(20)))),
+              padding: const EdgeInsets.symmetric(horizontal: 4),
+              shape: const AutomaticNotchedShape(RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(20)))),
               child: Obx(() => Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [bottomTab(1), bottomTab(2), bottomTab(3), bottomTab(4)])),
             ),
           ),

@@ -20,7 +20,7 @@ class VerifyCodeScreen extends StatelessWidget {
       () => Scaffold(
         appBar: MyAppBar(),
         body: ListView(
-          padding: .symmetric(horizontal: defaultPadding),
+          padding: const .symmetric(horizontal: defaultPadding),
           children: [
             Text(
               "Verify Code",
@@ -60,7 +60,7 @@ class VerifyCodeScreen extends StatelessWidget {
                 child: Container(
                   width: 20,
                   height: 2,
-                  margin: EdgeInsets.only(bottom: defaultPadding / 2),
+                  margin: const EdgeInsets.only(bottom: defaultPadding / 2),
                   color: Theme.of(context).primaryColor,
                 ),
               ),
@@ -104,7 +104,7 @@ class VerifyCodeScreen extends StatelessWidget {
             AppButton(
               title: "Sent OTP",
               disableButton: con.pinController.value.text.length < con.maxPinLength,
-              padding: EdgeInsets.only(top: defaultPadding),
+              padding: const EdgeInsets.only(top: defaultPadding),
               onPressed: () {
                 FocusScope.of(context).unfocus();
 
@@ -121,7 +121,7 @@ class VerifyCodeScreen extends StatelessWidget {
     return PinTheme(
       width: 47,
       height: 47,
-      margin: EdgeInsets.symmetric(horizontal: defaultPadding / 4),
+      margin: const EdgeInsets.symmetric(horizontal: defaultPadding / 4),
       textStyle: Theme.of(Get.context!).textTheme.titleMedium?.copyWith(color: Colors.white, fontSize: 15, fontWeight: FontWeight.w500),
       decoration: BoxDecoration(color: customColors(Get.context!).surfaceColor, borderRadius: borderRadius),
     );

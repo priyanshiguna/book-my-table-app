@@ -1,10 +1,10 @@
-import 'package:book_my_table_app/packages/animated_counter/animated_counter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:jiffy/jiffy.dart';
 
 import '../../exports.dart';
+import '../../packages/animated_counter/animated_counter.dart';
 
 extension StrExtension on String {
   /// Returns the first name if [isFirstName] is true (default),

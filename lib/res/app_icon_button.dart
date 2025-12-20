@@ -1,6 +1,7 @@
-import 'package:book_my_table_app/utils/extensions/color_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+import '../utils/extensions/color_extensions.dart';
 
 class AppIconButton extends StatelessWidget {
   final double size;

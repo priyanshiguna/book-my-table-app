@@ -1,8 +1,8 @@
-import 'package:book_my_table_app/controller/base_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import 'controller/base_controller.dart';
 import 'exports.dart';
 import 'utils/global_context.dart';
 import 'widgets/stretch_scroll_behavior.dart';

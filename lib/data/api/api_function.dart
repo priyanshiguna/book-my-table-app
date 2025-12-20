@@ -1,12 +1,14 @@
-import 'package:book_my_table_app/controller/network_controller.dart';
 import 'package:dio/dio.dart' as dio;
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 
+import '../../controller/network_controller.dart';
 import '../../exports.dart';
 import 'api_class.dart';
 
 class APIFunction {
+  APIFunction._();
+
   /// ***********************************************************************************
   ///                                    OPTIONS & HEADER
   /// ***********************************************************************************
@@ -34,7 +36,7 @@ class APIFunction {
     RxBool? loader,
   }) async {
     if (await getConnectivityResult()) {
-      dynamic response = await HttpUtil(errorToast: showErrorToast).get(
+      final dynamic response = await HttpUtil(errorToast: showErrorToast).get(
         withBaseUrl == true ? (ApiUrls.baseUrl + apiUrl) : apiUrl,
         body: body,
         queryParameters: params,
@@ -58,7 +60,7 @@ class APIFunction {
     RxBool? loader,
   }) async {
     if (await getConnectivityResult()) {
-      dynamic response = await HttpUtil(errorToast: showErrorToast).post(
+      final dynamic response = await HttpUtil(errorToast: showErrorToast).post(
         withBaseUrl == true ? (ApiUrls.baseUrl + apiUrl) : apiUrl,
         isDecode: isDecode ?? false,
         body: body,
@@ -81,7 +83,7 @@ class APIFunction {
     RxBool? loader,
   }) async {
     if (await getConnectivityResult()) {
-      dynamic response = await HttpUtil(errorToast: showErrorToast).put(
+      final dynamic response = await HttpUtil(errorToast: showErrorToast).put(
         withBaseUrl == true ? (ApiUrls.baseUrl + apiUrl) : apiUrl,
         isDecode: isDecode ?? false,
         body: body,
@@ -105,7 +107,7 @@ class APIFunction {
     RxBool? loader,
   }) async {
     if (await getConnectivityResult()) {
-      dynamic response = await HttpUtil(errorToast: showErrorToast).delete(
+      final dynamic response = await HttpUtil(errorToast: showErrorToast).delete(
         withBaseUrl == true ? (ApiUrls.baseUrl + apiUrl) : apiUrl,
         body: body,
         queryParameters: prams,
@@ -127,7 +129,7 @@ class APIFunction {
     RxBool? loader,
   }) async {
     if (await getConnectivityResult()) {
-      dynamic response = await HttpUtil(errorToast: showErrorToast).patch(
+      final dynamic response = await HttpUtil(errorToast: showErrorToast).patch(
         withBaseUrl == true ? (ApiUrls.baseUrl + apiUrl) : apiUrl,
         data: data,
         queryParameters: params,
@@ -149,7 +151,7 @@ class APIFunction {
     RxBool? loader,
   }) async {
     if (await getConnectivityResult()) {
-      dynamic response = await HttpUtil(errorToast: showErrorToast).postStream(
+      final dynamic response = await HttpUtil(errorToast: showErrorToast).postStream(
         withBaseUrl == true ? (ApiUrls.baseUrl + apiUrl) : apiUrl,
         data: data,
         dataLength: dataLength,

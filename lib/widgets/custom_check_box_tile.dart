@@ -1,8 +1,8 @@
-import 'package:book_my_table_app/utils/extensions/color_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../exports.dart';
+import '../utils/extensions/color_extensions.dart';
 
 class CustomCheckboxTile extends StatelessWidget {
   final double? scale;
@@ -18,7 +18,7 @@ class CustomCheckboxTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget myCheckbox = Obx(
+    final Widget myCheckbox = Obx(
       () => Transform.scale(
         scale: scale ?? 1.2,
         child: Checkbox(

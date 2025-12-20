@@ -1,9 +1,9 @@
-import 'package:book_my_table_app/packages/click_effect.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../exports.dart';
+import '../../../packages/click_effect.dart';
 
 class BottombarTile extends StatelessWidget {
   final void Function()? onTap;
@@ -19,7 +19,7 @@ class BottombarTile extends StatelessWidget {
     return ClickEffect(
       onTap: onTap,
       child: Padding(
-        padding: EdgeInsets.symmetric(vertical: defaultPadding / 1.5, horizontal: defaultPadding),
+        padding: const EdgeInsets.symmetric(vertical: defaultPadding / 1.5, horizontal: defaultPadding),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

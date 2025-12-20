@@ -17,8 +17,8 @@ const List<BoxShadow> defaultShadow = [BoxShadow(color: Colors.black12, blurRadi
 const Duration defaultDuration = Duration(milliseconds: 300);
 
 bool isValEmpty(dynamic val) {
-  String? value = val.toString();
-  return (val == null || value.isEmpty || value == "null" || value == "" || value == "NULL");
+  final String? value = val.toString();
+  return (val == null || value!.isEmpty || value == "null" || value == "" || value == "NULL");
 }
 
 Future<void> launchUrlFunction(String url, {String? errorMess}) async {
@@ -57,7 +57,7 @@ Future<String?> getClipboardData() async {
 }
 
 Future<PackageInfo> getPackageInfo() async {
-  PackageInfo packageInfo = await PackageInfo.fromPlatform();
+  final PackageInfo packageInfo = await PackageInfo.fromPlatform();
 
   printData(key: "AppName", value: packageInfo.appName);
   printData(key: "Version", value: packageInfo.version);

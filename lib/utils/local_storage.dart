@@ -24,6 +24,8 @@ class DevicePrefs {
 }
 
 class LocalStorage {
+  LocalStorage._();
+
   static GetStorage prefs = GetStorage();
   static const String _userModel = "user_model";
 

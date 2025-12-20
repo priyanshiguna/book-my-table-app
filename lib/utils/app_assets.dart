@@ -1,4 +1,6 @@
 class AppAssets {
+  AppAssets._();
+
   static const String imagesPath = "assets/images/";
   static const String svgPath = "assets/svg/";
   static const String jsonPath = "assets/lottie_json/";
@@ -33,4 +35,7 @@ class AppAssets {
   static const String wishlistSelectedIcon = "${svgPath}wishlist_selected_icon.svg";
   static const String profileBottomBarIcon = "${svgPath}profile_bottom_bar_icon.svg";
   static const String profileSelectedIcon = "${svgPath}profile_selected_icon.svg";
+
+  //* Home Screen
+  static const String bannerImage = "${imagesPath}special_offer.png";
 }

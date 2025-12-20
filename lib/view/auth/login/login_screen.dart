@@ -1,4 +1,3 @@
-import 'package:book_my_table_app/res/app_custom_color.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -7,6 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 import '../../../exports.dart';
+import '../../../res/app_custom_color.dart';
 import 'login_controller.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -21,8 +21,8 @@ class LoginScreen extends StatelessWidget {
       child: Obx(
         () => Scaffold(
           body: ListView(
-            physics: RangeMaintainingScrollPhysics(),
-            padding: EdgeInsets.all(0).copyWith(top: MediaQuery.of(context).padding.top + (defaultPadding * 4)),
+            physics: const RangeMaintainingScrollPhysics(),
+            padding: const EdgeInsets.all(0).copyWith(top: MediaQuery.of(context).padding.top + (defaultPadding * 4)),
             children: [
               Column(
                 children: [
@@ -51,7 +51,7 @@ class LoginScreen extends StatelessWidget {
                   AppTextField(
                     title: "Email",
                     hintText: "Enter Email",
-                    padding: .only(bottom: defaultPadding * 2),
+                    padding: const .only(bottom: defaultPadding * 2),
                     controller: con.emailCon.value,
                     validation: con.emailValidation.value,
                     errorMessage: con.emailError.value,
@@ -65,7 +65,7 @@ class LoginScreen extends StatelessWidget {
                   AppTextField(
                     title: "Password",
                     hintText: "Enter Password",
-                    padding: .only(bottom: defaultPadding * 1.2),
+                    padding: const .only(bottom: defaultPadding * 1.2),
                     obscureText: con.isPasswordVisible.value,
                     suffixIcon: UiUtils.togglePasswordIcon(
                       context,
@@ -104,7 +104,7 @@ class LoginScreen extends StatelessWidget {
               AppButton(
                 title: "Sign In",
                 disableButton: con.disableButton.value,
-                padding: .symmetric(horizontal: defaultPadding),
+                padding: const .symmetric(horizontal: defaultPadding),
                 onPressed: () {
                   FocusScope.of(context).unfocus();
 

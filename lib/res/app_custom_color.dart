@@ -35,6 +35,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
   final Color surfaceGrey;
   final Color whiteColor;
   final Color surfaceColor;
+  final Color lightGrey;
 
   const CustomColors({
     required this.kPrimaryColor,
@@ -59,6 +60,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     required this.surfaceGrey,
     required this.whiteColor,
     required this.surfaceColor,
+    required this.lightGrey,
   });
 
   @override
@@ -85,6 +87,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     Color? surfaceGrey,
     Color? whiteColor,
     Color? surfaceColor,
+    Color? lightGrey,
   }) {
     return CustomColors(
       kPrimaryColor: primaryRed ?? kPrimaryColor,
@@ -109,6 +112,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
       textFieldBorder: textFieldBorder ?? this.textFieldBorder,
       whiteColor: whiteColor ?? this.whiteColor,
       surfaceColor: surfaceColor ?? this.surfaceColor,
+      lightGrey: lightGrey ?? this.lightGrey,
     );
   }
 
@@ -138,6 +142,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
       textFieldBorder: Color.lerp(textFieldBorder, other.textFieldBorder, t)!,
       whiteColor: Color.lerp(whiteColor, other.whiteColor, t)!,
       surfaceColor: Color.lerp(surfaceColor, other.surfaceColor, t)!,
+      lightGrey: Color.lerp(lightGrey, other.lightGrey, t)!,
     );
   }
 }
@@ -169,5 +174,6 @@ CustomColors customColors(BuildContext context) {
         textFieldBorder: Colors.grey.shade500,
         whiteColor: Colors.white,
         surfaceColor: Colors.grey.shade800,
+        lightGrey: Colors.grey.shade500,
       );
 }

@@ -1,7 +1,8 @@
 import 'dart:math' as math;
 
-import 'package:book_my_table_app/utils/extensions/color_extensions.dart';
 import 'package:flutter/widgets.dart';
+
+import '../../utils/extensions/color_extensions.dart';
 
 class AnimatedFlipCounter extends StatelessWidget {
   final num value;
@@ -137,7 +138,7 @@ class _SingleDigitFlipCounter extends StatelessWidget {
   Widget _buildSingleDigit({required int digit, required double offset, required double opacity}) {
     // Try to avoid using the `Opacity` widget when possible, for performance.
     final Widget child;
-    double clampedOpacity = opacity.clamp(0, 1);
+    final double clampedOpacity = opacity.clamp(0, 1);
 
     if (color.a == 1.0) {
       // If the text style does not involve transparency, we can modify

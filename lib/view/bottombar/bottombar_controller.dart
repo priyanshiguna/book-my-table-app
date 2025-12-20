@@ -1,10 +1,10 @@
 import 'dart:async';
 
-import 'package:book_my_table_app/controller/network_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
+import '../../controller/network_controller.dart';
 import '../../exports.dart';
 import 'enum/bottombar_enum.dart';
 

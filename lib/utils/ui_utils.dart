@@ -1,5 +1,3 @@
-import 'package:book_my_table_app/res/app_custom_color.dart';
-import 'package:book_my_table_app/utils/extensions/color_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,8 +6,12 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
 import '../exports.dart';
+import '../res/app_custom_color.dart';
+import 'extensions/color_extensions.dart';
 
 class UiUtils {
+  UiUtils._();
+
   static double appButtonHeight = 48.w;
   static double bottomBarHeight = 85;
   static double appButtonHight = 48.w;
@@ -17,7 +19,7 @@ class UiUtils {
   static double bottomBarHeightWithPadding(BuildContext context) => MediaQuery.of(context).padding.bottom + bottomBarHeight + defaultPadding * 1.2;
 
   static Future toast(String? message) async {
-    FToast fToast = FToast();
+    final FToast fToast = FToast();
     fToast.removeQueuedCustomToasts();
     fToast.removeCustomToast();
     return Fluttertoast.showToast(msg: message ?? "", toastLength: Toast.LENGTH_SHORT, gravity: ToastGravity.BOTTOM, timeInSecForIosWeb: 1, fontSize: 16.0);
@@ -83,5 +85,27 @@ class UiUtils {
 
   static Widget divider(BuildContext context) {
     return Divider(color: customColors(context).textPrimaryBlack, thickness: 1, endIndent: defaultPadding / 2, indent: defaultPadding);
+  }
+
+  static Widget imageEmptyWidget(BuildContext context, {double? height, double? width, double? radius, Color? backgroundColor}) {
+    return Container(
+      color: Theme.of(context).scaffoldBackgroundColor,
+      child: Container(
+        height: height ?? 46.h,
+        width: width ?? 46.h,
+        decoration: BoxDecoration(
+          color: backgroundColor ?? Theme.of(context).primaryColor.withAppOpacity(.30),
+          borderRadius: BorderRadius.circular(radius ?? (defaultRadius - (10 / 2))),
+        ),
+        child: Center(
+          child: SvgPicture.asset(
+            AppAssets.appLogoSvg,
+            height: height,
+            width: width,
+            colorFilter: ColorFilter.mode(Theme.of(context).scaffoldBackgroundColor.withAppOpacity(.35), BlendMode.srcIn),
+          ),
+        ),
+      ),
+    );
   }
 }

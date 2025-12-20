@@ -1,14 +1,15 @@
-import 'package:book_my_table_app/data/model/common/enum_model.dart';
-import 'package:book_my_table_app/view/home/home_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../../../data/model/common/enum_model.dart';
 import '../../../exports.dart';
+import '../../home/home_screen.dart';
 
 enum BottombarTab {
   mainline,
   sme,
   history,
-  news;
+  news
+  ;
 
   static Map<BottombarTab, DropdownEnumData> data = {
     BottombarTab.mainline: DropdownEnumData(id: 1, slug: 'home', label: () => "Home", selectedImage: AppAssets.homeSelectedIcon, unselectImage: AppAssets.homeIcon),
@@ -32,10 +33,10 @@ enum BottombarTab {
   static Widget getBodyWidget(BottombarTab bottombarTab) => SizedBox(
     key: ValueKey<BottombarTab>(bottombarTab),
     child: switch (bottombarTab) {
-      BottombarTab.mainline => HomeScreen(),
-      BottombarTab.sme => HomeScreen(),
-      BottombarTab.history => HomeScreen(),
-      BottombarTab.news => HomeScreen(),
+      BottombarTab.mainline => const HomeScreen(),
+      BottombarTab.sme => const HomeScreen(),
+      BottombarTab.history => const HomeScreen(),
+      BottombarTab.news => const HomeScreen(),
     },
   );
 }

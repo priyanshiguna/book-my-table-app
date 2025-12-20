@@ -1,6 +1,5 @@
-import 'package:book_my_table_app/utils/common_enums.dart';
-
 import '../../exports.dart';
+import '../../utils/common_enums.dart';
 
 /// A utility class to manage the application's API environment configuration.
 class AppEnvironment {

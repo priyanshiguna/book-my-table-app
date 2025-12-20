@@ -52,6 +52,7 @@ class AppTheme {
           textFieldBorder: AppColors.textFieldBorder,
           whiteColor: AppColors.whiteColor,
           surfaceColor: AppColors.surfaceColor,
+          lightGrey: AppColors.lightGrey,
         ),
       ],
 
@@ -117,6 +118,7 @@ class AppTheme {
           textFieldBorder: AppColors.textFieldBorder,
           whiteColor: AppColors.whiteColor,
           surfaceColor: AppColors.surfaceColor,
+          lightGrey: AppColors.lightGrey,
           // bannerGradientColors: AppColors.bannerGradientColors,
         ),
       ],
@@ -135,7 +137,7 @@ class AppTheme {
       iconTheme: const IconThemeData(color: Colors.white),
       floatingActionButtonTheme: const FloatingActionButtonThemeData(backgroundColor: AppColors.kPrimaryColor, foregroundColor: Colors.white),
       colorScheme: const ColorScheme.dark(primary: AppColors.kPrimaryColor, secondary: AppColors.secondaryDark, surface: AppColors.surfaceGrey, error: AppColors.textError),
-      tabBarTheme: TabBarThemeData(indicatorColor: AppColors.kPrimaryColor),
+      tabBarTheme: const TabBarThemeData(indicatorColor: AppColors.kPrimaryColor),
     );
   }
 

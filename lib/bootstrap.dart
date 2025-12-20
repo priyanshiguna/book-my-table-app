@@ -1,8 +1,8 @@
-import 'package:book_my_table_app/data/services/notification_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_storage/get_storage.dart';
 
+import 'data/services/notification_service.dart';
 import 'exports.dart';
 
 /// 🧠 Shared bootstrap logic for both app runtime and widget testing

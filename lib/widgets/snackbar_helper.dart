@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:book_my_table_app/utils/extensions/color_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -9,6 +8,7 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 import '../exports.dart';
 import '../res/app_custom_color.dart';
 import '../utils/common_enums.dart';
+import '../utils/extensions/color_extensions.dart';
 import '../utils/global_context.dart';
 
 class SnackBarHelper {

@@ -1,9 +1,9 @@
-import 'package:book_my_table_app/res/app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../../../exports.dart';
+import '../../../../../res/app_bar.dart';
 import '../../../../../res/app_custom_color.dart';
 import 'forgot_password_controller.dart';
 
@@ -18,7 +18,7 @@ class ForgotPasswordScreen extends StatelessWidget {
       () => Scaffold(
         appBar: MyAppBar(),
         body: ListView(
-          padding: .symmetric(horizontal: defaultPadding),
+          padding: const .symmetric(horizontal: defaultPadding),
           children: [
             Text(
               "Forget Password",

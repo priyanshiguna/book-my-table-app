@@ -1,9 +1,12 @@
-import 'package:book_my_table_app/utils/extensions/color_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shimmer/shimmer.dart';
 
+import 'extensions/color_extensions.dart';
+
 class SimmerUtils {
+  SimmerUtils._();
+
   static Widget shimmer({
     required Widget child,
     Color? baseColor,
@@ -30,12 +33,13 @@ class SimmerUtils {
   }
 
   static Widget simmerContainer({double? height, double? width, double? borderRadius, Widget? child, Decoration? decoration}) => Container(
-        height: height,
-        width: width,
-        decoration: decoration ??
-            BoxDecoration(
-              borderRadius: BorderRadius.circular(borderRadius ?? 50),
-              color: Theme.of(Get.context!).primaryColor.withAppOpacity(0.1),
-            ),
-      );
+    height: height,
+    width: width,
+    decoration:
+        decoration ??
+        BoxDecoration(
+          borderRadius: BorderRadius.circular(borderRadius ?? 50),
+          color: Theme.of(Get.context!).primaryColor.withAppOpacity(0.1),
+        ),
+  );
 }

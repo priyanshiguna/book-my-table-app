@@ -16,12 +16,12 @@ class CompleteProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    GlobalKey genderKey = GlobalKey();
+    final GlobalKey genderKey = GlobalKey();
     return Obx(
       () => Scaffold(
         body: ListView(
-          physics: RangeMaintainingScrollPhysics(),
-          padding: EdgeInsets.all(0).copyWith(top: MediaQuery.of(context).padding.top + (defaultPadding * 3)),
+          physics: const RangeMaintainingScrollPhysics(),
+          padding: const EdgeInsets.all(0).copyWith(top: MediaQuery.of(context).padding.top + (defaultPadding * 3)),
           children: [
             Column(
               children: [
@@ -45,7 +45,7 @@ class CompleteProfileScreen extends StatelessWidget {
                       height: 100.h,
                       width: 100.h,
                       decoration: BoxDecoration(color: customColors(context).surfaceColor, shape: BoxShape.circle),
-                      padding: .all(defaultPadding * 1.2),
+                      padding: const .all(defaultPadding * 1.2),
                       child: SvgPicture.asset(AppAssets.profileIcon),
                     ),
 
@@ -69,7 +69,7 @@ class CompleteProfileScreen extends StatelessWidget {
                   controller: con.nameCon.value,
                   validation: con.nameValidation.value,
                   errorMessage: con.nameError.value,
-                  padding: .only(bottom: defaultPadding * 2.3),
+                  padding: const .only(bottom: defaultPadding * 2.3),
                   onChanged: (value) {
                     con.nameValidation.value = true;
                     con.checkDisableButton();
@@ -84,9 +84,9 @@ class CompleteProfileScreen extends StatelessWidget {
                   validation: con.phoneValidation.value,
                   errorMessage: con.phoneError.value,
                   textInputAction: TextInputAction.next,
-                  keyboardType: TextInputType.numberWithOptions(),
+                  keyboardType: const TextInputType.numberWithOptions(),
                   prefixIcon: UiUtils.countryCodeWidget(),
-                  padding: .only(bottom: defaultPadding * 2.3),
+                  padding: const .only(bottom: defaultPadding * 2.3),
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly, LengthLimitingTextInputFormatter(10)],
                   onChanged: (value) {
                     con.phoneValidation.value = true;
@@ -103,7 +103,7 @@ class CompleteProfileScreen extends StatelessWidget {
                   textInputAction: TextInputAction.next,
                   readOnly: true,
                   suffixIcon: Align(alignment: .bottomRight, child: SvgPicture.asset(AppAssets.downArrowSvg)).paddingOnly(bottom: defaultPadding / 1.5),
-                  padding: .only(bottom: defaultPadding * 2.3),
+                  padding: const .only(bottom: defaultPadding * 2.3),
                   onTap: () {
                     showCommonOverlay(
                       context,
@@ -126,7 +126,7 @@ class CompleteProfileScreen extends StatelessWidget {
             AppButton(
               title: "Complete Profile",
               // disableButton: con.disableButton.value,
-              padding: .symmetric(horizontal: defaultPadding),
+              padding: const .symmetric(horizontal: defaultPadding),
               onPressed: () {
                 FocusScope.of(context).unfocus();
 

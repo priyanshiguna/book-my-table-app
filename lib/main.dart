@@ -1,9 +1,9 @@
-import 'package:book_my_table_app/utils/common_enums.dart';
 import 'package:flutter/material.dart';
 
 import 'bootstrap.dart';
 import 'data/handler/app_environment.dart';
 import 'my_app.dart';
+import 'utils/common_enums.dart';
 
 void main() async {
   // 🧩 Inject the selected environment into the app's configuration

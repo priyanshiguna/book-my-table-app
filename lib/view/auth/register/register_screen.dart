@@ -1,4 +1,3 @@
-import 'package:book_my_table_app/res/app_custom_color.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -7,6 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 import '../../../exports.dart';
+import '../../../res/app_custom_color.dart';
 import 'register_controller.dart';
 
 class RegisterScreen extends StatelessWidget {
@@ -21,8 +21,8 @@ class RegisterScreen extends StatelessWidget {
       child: Obx(
         () => Scaffold(
           body: ListView(
-            physics: RangeMaintainingScrollPhysics(),
-            padding: EdgeInsets.all(0).copyWith(top: MediaQuery.of(context).padding.top + (defaultPadding * 2)),
+            physics: const RangeMaintainingScrollPhysics(),
+            padding: const EdgeInsets.all(0).copyWith(top: MediaQuery.of(context).padding.top + (defaultPadding * 2)),
             children: [
               Column(
                 children: [
@@ -63,14 +63,14 @@ class RegisterScreen extends StatelessWidget {
 
                       con.checkDisableButton();
                     },
-                    padding: .only(bottom: defaultPadding * 2),
+                    padding: const .only(bottom: defaultPadding * 2),
                   ),
 
                   /// Email Field
                   AppTextField(
                     title: "Email",
                     hintText: "Enter Email",
-                    padding: .only(bottom: defaultPadding * 2),
+                    padding: const .only(bottom: defaultPadding * 2),
                     controller: con.emailCon.value,
                     validation: con.emailValidation.value,
                     errorMessage: con.emailError.value,
@@ -86,7 +86,7 @@ class RegisterScreen extends StatelessWidget {
                   AppTextField(
                     title: "Password",
                     hintText: "Enter Password",
-                    padding: .only(bottom: defaultPadding * 2),
+                    padding: const .only(bottom: defaultPadding * 2),
                     obscureText: con.isPasswordVisible.value,
                     suffixIcon: UiUtils.togglePasswordIcon(
                       context,
@@ -110,7 +110,7 @@ class RegisterScreen extends StatelessWidget {
                   AppTextField(
                     title: "Confirm Password",
                     hintText: "Confirm Password",
-                    padding: .only(bottom: defaultPadding * 1.2),
+                    padding: const .only(bottom: defaultPadding * 1.2),
                     obscureText: con.isConfirmPasswordVisible.value,
                     suffixIcon: UiUtils.togglePasswordIcon(
                       context,
@@ -166,7 +166,7 @@ class RegisterScreen extends StatelessWidget {
               AppButton(
                 title: "Sign Up",
                 disableButton: con.disableButton.value,
-                padding: .symmetric(horizontal: defaultPadding),
+                padding: const .symmetric(horizontal: defaultPadding),
                 onPressed: () {
                   FocusScope.of(context).unfocus();
 

@@ -18,16 +18,16 @@ class GetUserModel {
   });
 
   factory GetUserModel.fromJson(Map<String, dynamic> json) => GetUserModel(
-        success: json["success"],
-        message: json["message"],
-        data: json["data"] == null ? null : UserModelData.fromJson(json["data"]),
-      );
+    success: json["success"],
+    message: json["message"],
+    data: json["data"] == null ? null : UserModelData.fromJson(json["data"]),
+  );
 
   Map<String, dynamic> toJson() => {
-        "success": success,
-        "message": message,
-        "data": data?.toJson(),
-      };
+    "success": success,
+    "message": message,
+    "data": data?.toJson(),
+  };
 }
 
 class UserModelData {
@@ -40,14 +40,14 @@ class UserModelData {
   });
 
   factory UserModelData.fromJson(Map<String, dynamic> json) => UserModelData(
-        userModel: json["user"] == null ? null : UserModel.fromJson(json["user"]),
-        tokens: json["tokens"] == null ? null : Tokens.fromJson(json["tokens"]),
-      );
+    userModel: json["user"] == null ? null : UserModel.fromJson(json["user"]),
+    tokens: json["tokens"] == null ? null : Tokens.fromJson(json["tokens"]),
+  );
 
   Map<String, dynamic> toJson() => {
-        "user": userModel?.toJson(),
-        "tokens": tokens?.toJson(),
-      };
+    "user": userModel?.toJson(),
+    "tokens": tokens?.toJson(),
+  };
 }
 
 class Tokens {
@@ -60,14 +60,14 @@ class Tokens {
   });
 
   factory Tokens.fromJson(Map<String, dynamic> json) => Tokens(
-        access: json["access"] == null ? null : Access.fromJson(json["access"]),
-        refresh: json["refresh"] == null ? null : Access.fromJson(json["refresh"]),
-      );
+    access: json["access"] == null ? null : Access.fromJson(json["access"]),
+    refresh: json["refresh"] == null ? null : Access.fromJson(json["refresh"]),
+  );
 
   Map<String, dynamic> toJson() => {
-        "access": access?.toJson(),
-        "refresh": refresh?.toJson(),
-      };
+    "access": access?.toJson(),
+    "refresh": refresh?.toJson(),
+  };
 }
 
 class Access {
@@ -80,14 +80,14 @@ class Access {
   });
 
   factory Access.fromJson(Map<String, dynamic> json) => Access(
-        token: json["token"],
-        expires: json["expires"] == null ? null : DateTime.parse(json["expires"]),
-      );
+    token: json["token"],
+    expires: json["expires"] == null ? null : DateTime.parse(json["expires"]),
+  );
 
   Map<String, dynamic> toJson() => {
-        "token": token,
-        "expires": expires?.toIso8601String(),
-      };
+    "token": token,
+    "expires": expires?.toIso8601String(),
+  };
 }
 
 class UserModel {
@@ -136,50 +136,50 @@ class UserModel {
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
-        id: json["_id"],
-        firstName: json["first_name"],
-        lastName: json["last_name"],
-        email: json["email"],
-        role: json["role"] == null ? null : RoleModel.fromJson(json["role"]),
-        friend: json["friend"] == null ? [] : List<dynamic>.from(json["friend"]!.map((x) => x)),
-        dateOfBirth: json["date_of_birth"] == null ? null : DateTime.parse(json["date_of_birth"]),
-        coins: json["coins"],
-        image: json["image"],
-        coverImage: json["cover_image"],
-        height: json["height"],
-        weight: json["weight"],
-        isEmailVerified: json["is_email_verified"],
-        isCompleted: json["is_completed"],
-        socialId: json["social_id"],
-        socialType: json["social_type"],
-        isBlock: json["is_block"],
-        isActive: json["is_active"],
-        recover: json["recover"],
-        deletedAt: json["deleted_at"] == null ? null : DateTime.parse(json["deleted_at"]),
-      );
+    id: json["_id"],
+    firstName: json["first_name"],
+    lastName: json["last_name"],
+    email: json["email"],
+    role: json["role"] == null ? null : RoleModel.fromJson(json["role"]),
+    friend: json["friend"] == null ? [] : List<dynamic>.from(json["friend"]!.map((x) => x)),
+    dateOfBirth: json["date_of_birth"] == null ? null : DateTime.parse(json["date_of_birth"]),
+    coins: json["coins"],
+    image: json["image"],
+    coverImage: json["cover_image"],
+    height: json["height"],
+    weight: json["weight"],
+    isEmailVerified: json["is_email_verified"],
+    isCompleted: json["is_completed"],
+    socialId: json["social_id"],
+    socialType: json["social_type"],
+    isBlock: json["is_block"],
+    isActive: json["is_active"],
+    recover: json["recover"],
+    deletedAt: json["deleted_at"] == null ? null : DateTime.parse(json["deleted_at"]),
+  );
 
   Map<String, dynamic> toJson() => {
-        "_id": id,
-        "first_name": firstName,
-        "last_name": lastName,
-        "email": email,
-        "role": role,
-        "friend": friend == null ? [] : List<dynamic>.from(friend!.map((x) => x)),
-        "date_of_birth": dateOfBirth?.toIso8601String(),
-        "coins": coins,
-        "image": image,
-        "cover_image": coverImage,
-        "height": height,
-        "weight": weight,
-        "is_email_verified": isEmailVerified,
-        "is_completed": isCompleted,
-        "social_id": socialId,
-        "social_type": socialType,
-        "is_block": isBlock,
-        "is_active": isActive,
-        "recover": recover,
-        "deleted_at": deletedAt?.toIso8601String(),
-      };
+    "_id": id,
+    "first_name": firstName,
+    "last_name": lastName,
+    "email": email,
+    "role": role,
+    "friend": friend == null ? [] : List<dynamic>.from(friend!.map((x) => x)),
+    "date_of_birth": dateOfBirth?.toIso8601String(),
+    "coins": coins,
+    "image": image,
+    "cover_image": coverImage,
+    "height": height,
+    "weight": weight,
+    "is_email_verified": isEmailVerified,
+    "is_completed": isCompleted,
+    "social_id": socialId,
+    "social_type": socialType,
+    "is_block": isBlock,
+    "is_active": isActive,
+    "recover": recover,
+    "deleted_at": deletedAt?.toIso8601String(),
+  };
 }
 
 class RoleModel {
@@ -198,18 +198,18 @@ class RoleModel {
   });
 
   factory RoleModel.fromJson(Map<String, dynamic> json) => RoleModel(
-        id: json["_id"],
-        role: json["role"],
-        slug: json["slug"],
-        isActive: json["is_active"],
-        deletedAt: json["deleted_at"] == null ? null : DateTime.parse(json["deleted_at"]),
-      );
+    id: json["_id"],
+    role: json["role"],
+    slug: json["slug"],
+    isActive: json["is_active"],
+    deletedAt: json["deleted_at"] == null ? null : DateTime.parse(json["deleted_at"]),
+  );
 
   Map<String, dynamic> toJson() => {
-        "_id": id,
-        "role": role,
-        "slug": slug,
-        "is_active": isActive,
-        "deleted_at": deletedAt?.toIso8601String(),
-      };
+    "_id": id,
+    "role": role,
+    "slug": slug,
+    "is_active": isActive,
+    "deleted_at": deletedAt?.toIso8601String(),
+  };
 }

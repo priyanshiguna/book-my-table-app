@@ -1,10 +1,10 @@
-import 'package:book_my_table_app/packages/click_effect.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 import '../exports.dart';
+import '../packages/click_effect.dart';
 import '../res/app_custom_color.dart';
 import '../utils/common_enums.dart';
 
@@ -36,14 +36,15 @@ class CustomRadioButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AnimatedDefaultTextStyle animatedDefaultTextStyle = AnimatedDefaultTextStyle(
+    final AnimatedDefaultTextStyle animatedDefaultTextStyle = AnimatedDefaultTextStyle(
       duration: defaultDuration,
-      style: titleStyle ??
+      style:
+          titleStyle ??
           Theme.of(context).textTheme.bodyMedium!.copyWith(
-                fontWeight: isSelected.isTrue ? FontWeight.w600 : FontWeight.w500,
-                color: Theme.of(context).textTheme.bodyMedium?.color?.withCtmOpacity(isSelected.isTrue ? 1 : 0.4),
-                fontSize: 14.sp,
-              ),
+            fontWeight: isSelected.isTrue ? FontWeight.w600 : FontWeight.w500,
+            color: Theme.of(context).textTheme.bodyMedium?.color?.withCtmOpacity(isSelected.isTrue ? 1 : 0.4),
+            fontSize: 14.sp,
+          ),
       child: Text(title ?? ""),
     );
     return ClickEffect(

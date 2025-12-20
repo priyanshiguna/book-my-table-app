@@ -1,12 +1,15 @@
-import 'package:book_my_table_app/view/home/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 import '../../exports.dart';
+import '../../packages/cached_network_image/cached_network_image.dart';
+import '../../packages/click_effect.dart';
 import '../../res/app_custom_color.dart';
 import '../../widgets/sliver_delegate.dart';
+import 'components/header_widget.dart';
+import 'home_controller.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -20,13 +23,13 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var searchField = Stack(
+    final searchField = Stack(
       children: [
         AppTextField(
           controller: con.searchCon.value,
           hintText: "Search for restaurant, cuisine or a dish",
-          contentPadding: EdgeInsets.symmetric(vertical: defaultPadding).copyWith(left: defaultPadding * 2),
-          padding: EdgeInsets.symmetric(horizontal: defaultPadding).copyWith(top: defaultPadding / 2),
+          contentPadding: const EdgeInsets.symmetric(vertical: defaultPadding).copyWith(left: defaultPadding * 2),
+          padding: const EdgeInsets.symmetric(horizontal: defaultPadding).copyWith(top: defaultPadding / 2),
           fillColor: customColors(context).whiteColor,
           textInputAction: .done,
           border: OutlineInputBorder(
@@ -65,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
           color: Theme.of(context).scaffoldBackgroundColor,
 
           child: CustomScrollView(
-            physics: ClampingScrollPhysics(),
+            physics: const ClampingScrollPhysics(),
             keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
             shrinkWrap: true,
             slivers: [
@@ -123,21 +126,28 @@ class _HomeScreenState extends State<HomeScreen> {
                     decoration: BoxDecoration(
                       color: Theme.of(context).scaffoldBackgroundColor,
                       borderRadius: const .vertical(bottom: Radius.circular(defaultRadius * 2)),
-                      boxShadow: [BoxShadow(color: Colors.black.withCtmOpacity(0.6), blurRadius: 8, spreadRadius: 1, offset: const Offset(0, -2))],
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withCtmOpacity(0.6),
+                          blurRadius: 8,
+                          spreadRadius: 1,
+                          offset: const Offset(0, -2),
+                        ),
+                      ],
                     ),
                     child: Stack(
                       children: [
                         Container(
                           decoration: BoxDecoration(
                             color: customColors(context).surfaceColor,
-                            borderRadius: .vertical(bottom: .circular(defaultRadius * 2.4)),
+                            borderRadius: const .vertical(bottom: .circular(defaultRadius * 2.4)),
                           ),
                         ),
                         Align(alignment: .bottomRight, child: SvgPicture.asset(AppAssets.homeBackground)),
                         Align(
                           alignment: .centerLeft,
                           child: Container(
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               // color: customColors(context).surfaceColor,
                               borderRadius: .vertical(bottom: .circular(defaultRadius * 2.4)),
                             ),
@@ -164,7 +174,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
                                             Text(
                                               "San Francisco, CA",
-                                              style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600, color: customColors(context).whiteColor, fontSize: 15.sp),
+                                              style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                                                fontWeight: FontWeight.w600,
+                                                color: customColors(context).whiteColor,
+                                                fontSize: 15.sp,
+                                              ),
                                             ),
                                             (defaultPadding / 5).horizontalSpace,
 
@@ -214,14 +228,170 @@ class _HomeScreenState extends State<HomeScreen> {
                         ).paddingOnly(top: defaultPadding / 1.5, right: defaultPadding / 3),
                       ],
                     ),
-                    ...List.generate(10, (index) {
-                      return Container(
-                        margin: EdgeInsets.symmetric(horizontal: defaultPadding, vertical: defaultPadding / 2).copyWith(top: 0),
-                        height: 100.h,
-                        decoration: BoxDecoration(color: customColors(context).surfaceColor, borderRadius: .circular(defaultRadius)),
-                      );
-                    }),
+
+                    // Banner Widget
+                    _buildBannerWidget(),
+
+                    // Cuisines
+                    Padding(
+                      padding: const .only(top: defaultPadding * 1.3, bottom: defaultPadding),
+                      child: Column(
+                        crossAxisAlignment: .start,
+                        children: [
+                          const HeaderWidget(
+                            title: "Cuisines",
+                          ).paddingOnly(left: defaultPadding),
+                          defaultPadding.verticalSpace,
+
+                          // Cuisines List
+                          SingleChildScrollView(
+                            physics: const ClampingScrollPhysics(),
+                            scrollDirection: .horizontal,
+                            child: Row(
+                              children: [
+                                ...List.generate(
+                                  5,
+                                  (index) => _buildCuisineCard(
+                                    title: "Italian",
+                                    imageUrl: "https://www.foodandwine.com/thmb/iJw7N_NfcPpd-EB8rpYbzrkSFIM=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/tomato-mozzarella-pizza-FT-RECIPE0725-e7244e979c504188a049623668c15b2e.jpg",
+                                  ).paddingOnly(right: defaultPadding / 1.2),
+                                ),
+                              ],
+                            ).paddingOnly(left: defaultPadding),
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildBannerWidget() {
+    return AspectRatio(
+      aspectRatio: 15 / 7,
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: defaultPadding),
+        padding: const EdgeInsets.all(3),
+        decoration: BoxDecoration(
+          border: Border.all(color: customColors(context).kPrimaryColor),
+          borderRadius: .circular(defaultRadius * 1.4),
+        ),
+        child: Stack(
+          children: [
+            /// Banner Image
+            Container(
+              decoration: BoxDecoration(
+                color: customColors(context).lightGrey,
+                borderRadius: .circular(defaultRadius * 1.3),
+                image: const DecorationImage(image: AssetImage(AppAssets.bannerImage), fit: BoxFit.cover),
+              ),
+            ),
+
+            Positioned(
+              top: defaultPadding / 1.7,
+              left: defaultPadding / 1.1,
+              child: Column(
+                crossAxisAlignment: .start,
+                children: [
+                  /// Weekend Offer Tag
+                  Container(
+                    padding: const .symmetric(horizontal: defaultPadding / 1.4, vertical: defaultPadding / 3.4),
+                    decoration: BoxDecoration(
+                      borderRadius: .circular(defaultRadius * 4),
+                      color: customColors(context).whiteColor,
+                    ),
+                    child: Text(
+                      "Weekend Offers",
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        fontSize: 10.sp,
+                      ),
+                    ),
+                  ),
+
+                  /// Get 20% Off Text
+                  (defaultPadding / 2).verticalSpace,
+                  Text(
+                    "Get Special Offer",
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontSize: 19.sp,
+                      color: customColors(context).whiteColor,
+                      fontWeight: .w600,
+                    ),
+                  ),
+
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Up to  ",
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          fontSize: 14.sp,
+                          color: customColors(context).whiteColor,
+                        ),
+                      ).paddingOnly(top: defaultPadding / 3),
+                      Text(
+                        "30%",
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          fontSize: 32.sp,
+                          fontWeight: .w600,
+                          color: customColors(context).whiteColor,
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  /// Book Now
+                  AppButton(
+                    title: "Book Now",
+                    height: 24.h,
+                    width: 80.w,
+                    fontSize: 10.sp,
+                    onPressed: () {},
+                  ).paddingOnly(top: defaultPadding / 3),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildCuisineCard({required String title, required String imageUrl, VoidCallback? onPressed}) {
+    return ClickEffect(
+      onTap: onPressed,
+      child: SizedBox(
+        height: 28.h,
+        width: 85.w,
+        child: ClipRRect(
+          borderRadius: .circular(defaultRadius * 3),
+          child: Stack(
+            fit: StackFit.expand,
+            children: [
+              // background image using your AppNetworkImage
+              AppNetworkImage(
+                imageUrl: imageUrl,
+                fit: BoxFit.cover,
+              ),
+
+              // dark overlay for readable text
+              Container(color: Colors.black.withOpacity(0.45)),
+
+              // centered title
+              Center(
+                child: Text(
+                  title,
+                  style: AppTextStyle.appButtonStyle(context).copyWith(
+                    fontSize: 15.sp,
+                    color: customColors(context).whiteColor,
+                    fontWeight: .w400,
+                  ),
                 ),
               ),
             ],

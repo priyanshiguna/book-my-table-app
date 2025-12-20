@@ -1,4 +1,3 @@
-import 'package:book_my_table_app/res/app_custom_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../exports.dart';
 import '../utils/common_enums.dart';
+import 'app_custom_color.dart';
 
 class AppTextField extends StatefulWidget {
   /// Global property

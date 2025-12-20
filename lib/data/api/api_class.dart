@@ -28,7 +28,7 @@ class HttpUtil {
   String apiUrl = ApiUrls.baseUrl;
 
   HttpUtil._internal() {
-    BaseOptions options = BaseOptions(
+    final BaseOptions options = BaseOptions(
       baseUrl: apiUrl,
       connectTimeout: defaultTimeoutDuration,
       receiveTimeout: defaultTimeoutDuration,
@@ -37,7 +37,7 @@ class HttpUtil {
     );
 
     dio = Dio(options);
-    CookieJar cookieJar = CookieJar();
+    final CookieJar cookieJar = CookieJar();
     dio.interceptors.add(CookieManager(cookieJar));
 
     /// SHOW API LOGS
@@ -76,7 +76,7 @@ class HttpUtil {
                 ).then(
                   (response) async {
                     if (response != null && response['data'] != null) {
-                      Tokens model = Tokens.fromJson(response['data']);
+                      final Tokens model = Tokens.fromJson(response['data']);
 
                       LocalStorage.accessToken.value = model.access?.token ?? "";
                       LocalStorage.refreshToken.value = model.refresh?.token ?? "";
@@ -153,7 +153,7 @@ class HttpUtil {
       case DioExceptionType.badResponse:
         {
           try {
-            int errCode = error.response != null ? error.response!.statusCode! : 00;
+            final int errCode = error.response != null ? error.response!.statusCode! : 00;
             switch (errCode) {
               case 400:
                 return ErrorEntity(code: errCode, message: "Request syntax error");
@@ -215,7 +215,7 @@ class HttpUtil {
   }) async {
     loader?.value = true;
     try {
-      Options requestOptions = options ?? Options();
+      final Options requestOptions = options ?? Options();
       requestOptions.extra ??= {};
       requestOptions.extra!.addAll({
         "refresh": refresh,
@@ -225,7 +225,7 @@ class HttpUtil {
         "cacheDisk": cacheDisk,
       });
 
-      var response = await dio.get(
+      final response = await dio.get(
         path,
         queryParameters: queryParameters,
         options: options,
@@ -248,11 +248,11 @@ class HttpUtil {
   }) async {
     loader?.value = true;
     try {
-      Options requestOptions = options ?? Options();
+      final Options requestOptions = options ?? Options();
 
       printOkStatus(path);
 
-      var response = await dio.post(
+      final response = await dio.post(
         path,
         data: isDecode == false ? body : d.FormData.fromMap(body),
         queryParameters: queryParameters,
@@ -276,8 +276,8 @@ class HttpUtil {
   }) async {
     loader?.value = true;
     try {
-      Options requestOptions = options ?? Options();
-      var response = await dio.put(
+      final Options requestOptions = options ?? Options();
+      final response = await dio.put(
         path,
         data: isDecode == false ? body : d.FormData.fromMap(body),
         queryParameters: queryParameters,
@@ -300,9 +300,9 @@ class HttpUtil {
   }) async {
     loader?.value = true;
     try {
-      Options requestOptions = options ?? Options();
+      final Options requestOptions = options ?? Options();
 
-      var response = await dio.delete(
+      final response = await dio.delete(
         path,
         data: isDecode == false ? body : d.FormData.fromMap(body),
         queryParameters: queryParameters,
@@ -324,9 +324,9 @@ class HttpUtil {
   }) async {
     loader?.value = true;
     try {
-      Options requestOptions = options ?? Options();
+      final Options requestOptions = options ?? Options();
 
-      var response = await dio.patch(
+      final response = await dio.patch(
         path,
         data: data,
         queryParameters: queryParameters,
@@ -349,12 +349,12 @@ class HttpUtil {
   }) async {
     loader?.value = true;
     try {
-      Options requestOptions = options ?? Options();
+      final Options requestOptions = options ?? Options();
 
       requestOptions.headers!.addAll({
         Headers.contentLengthHeader: dataLength.toString(),
       });
-      var response = await dio.post(
+      final response = await dio.post(
         path,
         data: Stream.fromIterable(data.map((e) => [e])),
         queryParameters: queryParameters,
