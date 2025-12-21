@@ -7,8 +7,10 @@ import '../../exports.dart';
 import '../../packages/cached_network_image/cached_network_image.dart';
 import '../../packages/click_effect.dart';
 import '../../res/app_custom_color.dart';
+import '../../res/empty_element.dart';
 import '../../widgets/sliver_delegate.dart';
 import 'components/header_widget.dart';
+import 'components/restaurant_card.dart';
 import 'home_controller.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -61,211 +63,254 @@ class _HomeScreenState extends State<HomeScreen> {
       ],
     );
 
-    return Scaffold(
-      backgroundColor: customColors(context).surfaceColor,
-      body: SafeArea(
-        child: Container(
-          color: Theme.of(context).scaffoldBackgroundColor,
+    return Obx(
+      () => Scaffold(
+        backgroundColor: customColors(context).surfaceColor,
+        body: SafeArea(
+          child: Container(
+            color: Theme.of(context).scaffoldBackgroundColor,
 
-          child: CustomScrollView(
-            physics: const ClampingScrollPhysics(),
-            keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-            shrinkWrap: true,
-            slivers: [
-              //* LOCATION & NOTIFICATION
-              /*       SliverToBoxAdapter(
-                child: Container(
-                  color: customColors(context).surfaceColor,
-                  padding: const EdgeInsets.all(defaultPadding).copyWith(right: defaultPadding / 4, bottom: defaultPadding / 2),
-                  child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                      /// HEADER
-                      Row(
-                        mainAxisAlignment: .spaceBetween,
+            child: CustomScrollView(
+              physics: const ClampingScrollPhysics(),
+              keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+              shrinkWrap: true,
+              slivers: [
+                //* LOCATION & NOTIFICATION
+                /*       SliverToBoxAdapter(
+                  child: Container(
+                    color: customColors(context).surfaceColor,
+                    padding: const EdgeInsets.all(defaultPadding).copyWith(right: defaultPadding / 4, bottom: defaultPadding / 2),
+                    child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                        /// HEADER
+                        Row(
+                          mainAxisAlignment: .spaceBetween,
+                          children: [
+                            Column(
+                              crossAxisAlignment: .start,
+                              children: [
+                                Text(
+                                  "Location",
+                                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: customColors(context).textPrimaryBlack, fontSize: 12.sp),
+                                ).paddingOnly(left: 3),
+                                (defaultPadding / 4).verticalSpace,
+                                Row(
+                                  children: [
+                                    Icon(Icons.location_on_outlined, size: 15.sp, color: customColors(context).kPrimaryColor),
+                                    (defaultPadding / 4).horizontalSpace,
+      
+                                    Text(
+                                      "San Francisco, CA",
+                                      style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600, color: customColors(context).whiteColor, fontSize: 15.sp),
+                                    ),
+                                    (defaultPadding / 5).horizontalSpace,
+      
+                                    Icon(Icons.keyboard_arrow_down_rounded, size: 20, color: customColors(context).textPrimaryBlack),
+                                  ],
+                                ),
+                              ],
+                            ),
+      
+                            /// Notification
+                            AppIconButton(onPressed: () {}, icon: SvgPicture.asset(AppAssets.notificationIcon)),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ), */
+
+                /// SEARCH BAR
+                SliverPersistentHeader(
+                  pinned: true,
+                  delegate: SliverAppBarDelegate(
+                    maxHeight: 110.h,
+                    minHeight: 110.h,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).scaffoldBackgroundColor,
+                        borderRadius: const .vertical(bottom: Radius.circular(defaultRadius * 2)),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withCtmOpacity(0.6),
+                            blurRadius: 8,
+                            spreadRadius: 1,
+                            offset: const Offset(0, -2),
+                          ),
+                        ],
+                      ),
+                      child: Stack(
                         children: [
-                          Column(
-                            crossAxisAlignment: .start,
-                            children: [
-                              Text(
-                                "Location",
-                                style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: customColors(context).textPrimaryBlack, fontSize: 12.sp),
-                              ).paddingOnly(left: 3),
-                              (defaultPadding / 4).verticalSpace,
-                              Row(
+                          Container(
+                            decoration: BoxDecoration(
+                              color: customColors(context).surfaceColor,
+                              borderRadius: const .vertical(bottom: .circular(defaultRadius * 2.4)),
+                            ),
+                          ),
+                          Align(alignment: .bottomRight, child: SvgPicture.asset(AppAssets.homeBackground)),
+                          Align(
+                            alignment: .centerLeft,
+                            child: Container(
+                              decoration: const BoxDecoration(
+                                // color: customColors(context).surfaceColor,
+                                borderRadius: .vertical(bottom: .circular(defaultRadius * 2.4)),
+                              ),
+                              child: Column(
                                 children: [
-                                  Icon(Icons.location_on_outlined, size: 15.sp, color: customColors(context).kPrimaryColor),
-                                  (defaultPadding / 4).horizontalSpace,
+                                  5.verticalSpace,
 
-                                  Text(
-                                    "San Francisco, CA",
-                                    style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600, color: customColors(context).whiteColor, fontSize: 15.sp),
-                                  ),
-                                  (defaultPadding / 5).horizontalSpace,
+                                  /// HEADER
+                                  Row(
+                                    mainAxisAlignment: .spaceBetween,
+                                    children: [
+                                      Column(
+                                        crossAxisAlignment: .start,
+                                        children: [
+                                          Text(
+                                            "Location",
+                                            style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: customColors(context).textPrimaryBlack, fontSize: 12.sp),
+                                          ).paddingOnly(left: 3),
+                                          (defaultPadding / 4).verticalSpace,
+                                          Row(
+                                            children: [
+                                              Icon(Icons.location_on_outlined, size: 15.sp, color: customColors(context).kPrimaryColor),
+                                              (defaultPadding / 4).horizontalSpace,
 
-                                  Icon(Icons.keyboard_arrow_down_rounded, size: 20, color: customColors(context).textPrimaryBlack),
+                                              Text(
+                                                "San Francisco, CA",
+                                                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                                                  fontWeight: FontWeight.w600,
+                                                  color: customColors(context).whiteColor,
+                                                  fontSize: 15.sp,
+                                                ),
+                                              ),
+                                              (defaultPadding / 5).horizontalSpace,
+
+                                              Icon(Icons.keyboard_arrow_down_rounded, size: 20, color: customColors(context).textPrimaryBlack),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+
+                                      /// Notification
+                                      AppIconButton(onPressed: () {}, icon: SvgPicture.asset(AppAssets.notificationIcon)),
+                                    ],
+                                  ).paddingSymmetric(horizontal: defaultPadding),
+
+                                  //* SEARCH FIELD
+                                  searchField,
                                 ],
                               ),
-                            ],
+                            ),
                           ),
-
-                          /// Notification
-                          AppIconButton(onPressed: () {}, icon: SvgPicture.asset(AppAssets.notificationIcon)),
                         ],
+                      ),
+                    ),
+                  ),
+                ),
+
+                /// OTHER WIDGETS
+                SliverToBoxAdapter(
+                  child: Column(
+                    crossAxisAlignment: .start,
+                    children: [
+                      // Special Offers
+                      Row(
+                        mainAxisAlignment: .spaceBetween,
+                        crossAxisAlignment: .center,
+                        children: [
+                          Text(
+                            "Special Offers",
+                            style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600, color: customColors(context).whiteColor, fontSize: 18.sp),
+                          ).paddingSymmetric(horizontal: defaultPadding).paddingOnly(top: defaultPadding * 1.5, bottom: defaultPadding),
+                          TextButton(
+                            onPressed: () {},
+                            child: Text(
+                              "See All",
+                              style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                                fontWeight: FontWeight.w400,
+                                color: customColors(context).kPrimaryColor,
+                                fontSize: 12.sp,
+                              ),
+                            ),
+                          ).paddingOnly(top: defaultPadding / 1.5, right: defaultPadding / 3),
+                        ],
+                      ),
+
+                      // Banner Widget
+                      _buildBannerWidget(),
+
+                      // Cuisines
+                      Padding(
+                        padding: const .only(top: defaultPadding * 1.3, bottom: defaultPadding),
+                        child: Column(
+                          crossAxisAlignment: .start,
+                          children: [
+                            if (con.cuisineList.isNotEmpty) ...[
+                              const HeaderWidget(
+                                title: "Cuisines",
+                              ).paddingOnly(left: defaultPadding),
+                              (defaultPadding / 1.2).verticalSpace,
+
+                              // Cuisines List
+                              SingleChildScrollView(
+                                physics: const ClampingScrollPhysics(),
+                                scrollDirection: .horizontal,
+                                child: Row(
+                                  children: [
+                                    ...List.generate(
+                                      con.cuisineList.length,
+                                      (index) => _buildCuisineCard(
+                                        title: con.cuisineList[index].name ?? "",
+                                        imageUrl: con.cuisineList[index].imageUrl ?? "",
+                                        onPressed: () {},
+                                      ).paddingOnly(right: defaultPadding / 1.2),
+                                    ),
+                                  ],
+                                ).paddingOnly(left: defaultPadding),
+                              ).paddingOnly(bottom: defaultPadding * 1.3),
+                            ],
+
+                            const HeaderWidget(
+                              title: "Popular Restaurants",
+                            ).paddingOnly(left: defaultPadding, bottom: defaultPadding),
+
+                            /// Restaurants List
+                            if (con.restaurantList.isNotEmpty)
+                              ListView.separated(
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemCount: con.restaurantList.length,
+                                separatorBuilder: (context, index) => defaultPadding.verticalSpace,
+                                itemBuilder: (context, index) {
+                                  final restaurant = con.restaurantList[index];
+
+                                  return RestaurantCard(
+                                    imageUrl: restaurant.imageUrl,
+                                    name: restaurant.name,
+                                    rating: restaurant.rating,
+                                    time: restaurant.time,
+                                    type: restaurant.type,
+                                    address: restaurant.address,
+                                    isWishListed: restaurant.isWishListed,
+                                    onPressed: () {},
+                                    OnWishListPressed: () {
+                                      restaurant.isWishListed.value = !(restaurant.isWishListed.value);
+                                    },
+                                  );
+                                },
+                              )
+                            else
+                              const EmptyElement(
+                                title: "No Restaurants Found",
+                              ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
                 ),
-              ), */
-
-              /// SEARCH BAR
-              SliverPersistentHeader(
-                pinned: true,
-                delegate: SliverAppBarDelegate(
-                  maxHeight: 110.h,
-                  minHeight: 110.h,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).scaffoldBackgroundColor,
-                      borderRadius: const .vertical(bottom: Radius.circular(defaultRadius * 2)),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withCtmOpacity(0.6),
-                          blurRadius: 8,
-                          spreadRadius: 1,
-                          offset: const Offset(0, -2),
-                        ),
-                      ],
-                    ),
-                    child: Stack(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            color: customColors(context).surfaceColor,
-                            borderRadius: const .vertical(bottom: .circular(defaultRadius * 2.4)),
-                          ),
-                        ),
-                        Align(alignment: .bottomRight, child: SvgPicture.asset(AppAssets.homeBackground)),
-                        Align(
-                          alignment: .centerLeft,
-                          child: Container(
-                            decoration: const BoxDecoration(
-                              // color: customColors(context).surfaceColor,
-                              borderRadius: .vertical(bottom: .circular(defaultRadius * 2.4)),
-                            ),
-                            child: Column(
-                              children: [
-                                5.verticalSpace,
-
-                                /// HEADER
-                                Row(
-                                  mainAxisAlignment: .spaceBetween,
-                                  children: [
-                                    Column(
-                                      crossAxisAlignment: .start,
-                                      children: [
-                                        Text(
-                                          "Location",
-                                          style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: customColors(context).textPrimaryBlack, fontSize: 12.sp),
-                                        ).paddingOnly(left: 3),
-                                        (defaultPadding / 4).verticalSpace,
-                                        Row(
-                                          children: [
-                                            Icon(Icons.location_on_outlined, size: 15.sp, color: customColors(context).kPrimaryColor),
-                                            (defaultPadding / 4).horizontalSpace,
-
-                                            Text(
-                                              "San Francisco, CA",
-                                              style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                                                fontWeight: FontWeight.w600,
-                                                color: customColors(context).whiteColor,
-                                                fontSize: 15.sp,
-                                              ),
-                                            ),
-                                            (defaultPadding / 5).horizontalSpace,
-
-                                            Icon(Icons.keyboard_arrow_down_rounded, size: 20, color: customColors(context).textPrimaryBlack),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-
-                                    /// Notification
-                                    AppIconButton(onPressed: () {}, icon: SvgPicture.asset(AppAssets.notificationIcon)),
-                                  ],
-                                ).paddingSymmetric(horizontal: defaultPadding),
-
-                                //* SEARCH FIELD
-                                searchField,
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-
-              /// OTHER WIDGETS
-              SliverToBoxAdapter(
-                child: Column(
-                  crossAxisAlignment: .start,
-                  children: [
-                    // Special Offers
-                    Row(
-                      mainAxisAlignment: .spaceBetween,
-                      crossAxisAlignment: .center,
-                      children: [
-                        Text(
-                          "Special Offers",
-                          style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600, color: customColors(context).whiteColor, fontSize: 18.sp),
-                        ).paddingSymmetric(horizontal: defaultPadding).paddingOnly(top: defaultPadding * 1.5, bottom: defaultPadding),
-                        TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            "See All",
-                            style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w400, color: customColors(context).kPrimaryColor, fontSize: 12.sp),
-                          ),
-                        ).paddingOnly(top: defaultPadding / 1.5, right: defaultPadding / 3),
-                      ],
-                    ),
-
-                    // Banner Widget
-                    _buildBannerWidget(),
-
-                    // Cuisines
-                    Padding(
-                      padding: const .only(top: defaultPadding * 1.3, bottom: defaultPadding),
-                      child: Column(
-                        crossAxisAlignment: .start,
-                        children: [
-                          const HeaderWidget(
-                            title: "Cuisines",
-                          ).paddingOnly(left: defaultPadding),
-                          defaultPadding.verticalSpace,
-
-                          // Cuisines List
-                          SingleChildScrollView(
-                            physics: const ClampingScrollPhysics(),
-                            scrollDirection: .horizontal,
-                            child: Row(
-                              children: [
-                                ...List.generate(
-                                  5,
-                                  (index) => _buildCuisineCard(
-                                    title: "Italian",
-                                    imageUrl: "https://www.foodandwine.com/thmb/iJw7N_NfcPpd-EB8rpYbzrkSFIM=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/tomato-mozzarella-pizza-FT-RECIPE0725-e7244e979c504188a049623668c15b2e.jpg",
-                                  ).paddingOnly(right: defaultPadding / 1.2),
-                                ),
-                              ],
-                            ).paddingOnly(left: defaultPadding),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

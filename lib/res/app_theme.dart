@@ -53,6 +53,7 @@ class AppTheme {
           whiteColor: AppColors.whiteColor,
           surfaceColor: AppColors.surfaceColor,
           lightGrey: AppColors.lightGrey,
+          surfaceDark: AppColors.surfaceDark,
         ),
       ],
 
@@ -119,7 +120,7 @@ class AppTheme {
           whiteColor: AppColors.whiteColor,
           surfaceColor: AppColors.surfaceColor,
           lightGrey: AppColors.lightGrey,
-          // bannerGradientColors: AppColors.bannerGradientColors,
+          surfaceDark: AppColors.surfaceDark,
         ),
       ],
 

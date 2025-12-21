@@ -36,6 +36,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
   final Color whiteColor;
   final Color surfaceColor;
   final Color lightGrey;
+  final Color surfaceDark;
 
   const CustomColors({
     required this.kPrimaryColor,
@@ -61,6 +62,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     required this.whiteColor,
     required this.surfaceColor,
     required this.lightGrey,
+    required this.surfaceDark,
   });
 
   @override
@@ -88,6 +90,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     Color? whiteColor,
     Color? surfaceColor,
     Color? lightGrey,
+    Color? surfaceDark,
   }) {
     return CustomColors(
       kPrimaryColor: primaryRed ?? kPrimaryColor,
@@ -113,6 +116,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
       whiteColor: whiteColor ?? this.whiteColor,
       surfaceColor: surfaceColor ?? this.surfaceColor,
       lightGrey: lightGrey ?? this.lightGrey,
+      surfaceDark: surfaceDark ?? this.surfaceDark,
     );
   }
 
@@ -143,6 +147,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
       whiteColor: Color.lerp(whiteColor, other.whiteColor, t)!,
       surfaceColor: Color.lerp(surfaceColor, other.surfaceColor, t)!,
       lightGrey: Color.lerp(lightGrey, other.lightGrey, t)!,
+      surfaceDark: Color.lerp(surfaceDark, other.surfaceDark, t)!,
     );
   }
 }
@@ -175,5 +180,6 @@ CustomColors customColors(BuildContext context) {
         whiteColor: Colors.white,
         surfaceColor: Colors.grey.shade800,
         lightGrey: Colors.grey.shade500,
+        surfaceDark: Colors.black12,
       );
 }

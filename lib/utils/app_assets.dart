@@ -36,6 +36,14 @@ class AppAssets {
   static const String profileBottomBarIcon = "${svgPath}profile_bottom_bar_icon.svg";
   static const String profileSelectedIcon = "${svgPath}profile_selected_icon.svg";
 
+  static const String starIcon = "${svgPath}star.svg";
+  static const String locationSVG = "${svgPath}location.svg";
+  static const String foodIcon = "${svgPath}food_icon.svg";
+  static const String clockIcon = "${svgPath}clock_icon.svg";
+  static const String heartIcon = "${svgPath}heart_icon.svg";
+  static const String heartFillIcon = "${svgPath}heart_fill_icon.svg";
+
   //* Home Screen
   static const String bannerImage = "${imagesPath}special_offer.png";
+  static const String emptyImage = "${imagesPath}empty_image.png";
 }

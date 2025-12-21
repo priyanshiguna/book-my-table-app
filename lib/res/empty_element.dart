@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 import '../exports.dart';
-import '../utils/utils.dart';
 
 class EmptyElement extends StatelessWidget {
   final String? imagePath;
@@ -31,15 +31,21 @@ class EmptyElement extends StatelessWidget {
           mainAxisAlignment: mainAxis ?? .end,
           mainAxisSize: MainAxisSize.min,
           children: [
-            // if (imageHeight != 0) ...[
-            //   SvgPicture.string(
-            //     AppAssets.dynamicEmptyData(context),
-            //     width: imageWidth ?? Get.width / 3,
-            //     height: imageHeight ?? Get.width / 3.5,
-            //   ),
-            //   if (spacing != 0.0) SizedBox(height: spacing),
-            // ],
-            const SizedBox(height: defaultPadding / 2),
+            if (imageHeight != 0) ...[
+              Image.asset(
+                AppAssets.emptyImage,
+                width: imageWidth ?? Get.width / 1,
+                height: imageHeight ?? 200,
+                fit: BoxFit.contain,
+              ),
+              // SvgPicture.string(
+              //   AppAssets.dynamicEmptyData(context),
+              //   width: imageWidth ?? Get.width / 3,
+              //   height: imageHeight ?? Get.width / 3.5,
+              // ),
+              if (spacing != 0.0) SizedBox(height: spacing),
+            ],
+            // const SizedBox(height: defaultPadding / 2),
             if (title != "")
               Text(
                 title,

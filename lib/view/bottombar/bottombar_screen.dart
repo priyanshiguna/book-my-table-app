@@ -35,14 +35,29 @@ class BottombarScreen extends StatelessWidget {
               child: SizedBox(key: ValueKey<BottombarTab>(con.selectedBottomTab.value), child: BottombarTab.getBodyWidget(con.selectedBottomTab.value)),
             ),
             floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-            bottomNavigationBar: BottomAppBar(
-              notchMargin: 6,
+            bottomNavigationBar: Material(
               elevation: 35,
-              shadowColor: customColors(context).textPrimaryBlack,
-              color: customColors(context).surfaceColor,
-              padding: const EdgeInsets.symmetric(horizontal: 4),
-              shape: const AutomaticNotchedShape(RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(20)))),
-              child: Obx(() => Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [bottomTab(1), bottomTab(2), bottomTab(3), bottomTab(4)])),
+              shadowColor: customColors(context).whiteColor,
+              borderRadius: const BorderRadius.vertical(
+                top: Radius.circular(20),
+              ),
+              clipBehavior: Clip.antiAliasWithSaveLayer,
+              child: BottomAppBar(
+                notchMargin: 6,
+                elevation: 35,
+                // clipBehavior: Clip.antiAlias,
+                shadowColor: customColors(context).whiteColor,
+                color: customColors(context).surfaceColor,
+                padding: const EdgeInsets.symmetric(horizontal: 4),
+                shape: const AutomaticNotchedShape(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(20),
+                    ),
+                  ),
+                ),
+                child: Obx(() => Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [bottomTab(1), bottomTab(2), bottomTab(3), bottomTab(4)])),
+              ),
             ),
           ),
         ),
@@ -53,6 +68,7 @@ class BottombarScreen extends StatelessWidget {
   BottombarTile bottomTab(int index) => BottombarTile(
     isSelected: con.selectedBottomTab.value == BottombarTab.fromId(index),
     title: BottombarTab.fromId(index).label,
+
     image: con.selectedBottomTab.value == BottombarTab.fromId(index) ? BottombarTab.fromId(index).selectedImage : BottombarTab.fromId(index).unselectImage,
     onTap: () {
       con.onBottomBarTap(hapticFeedback: true, BottombarTab.fromId(index));
