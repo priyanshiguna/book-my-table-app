@@ -21,7 +21,7 @@ class AppTheme {
       splashColor: AppColors.kPrimaryColor.withAlpha(200),
       hoverColor: AppColors.kPrimaryColor.withAlpha(100),
       splashFactory: InkRipple.splashFactory,
-      canvasColor: Colors.white,
+      canvasColor: AppColors.backgroundDark,
       disabledColor: const Color(0xFFD3D9DD),
       textTheme: buildTextTheme(base: ThemeData.light().textTheme, myFontFamily: fontFamilyName),
       primaryTextTheme: buildTextTheme(base: ThemeData.light().primaryTextTheme, myFontFamily: fontFamilyName),
@@ -54,6 +54,7 @@ class AppTheme {
           surfaceColor: AppColors.surfaceColor,
           lightGrey: AppColors.lightGrey,
           surfaceDark: AppColors.surfaceDark,
+          lightGreen: AppColors.lightGreen,
         ),
       ],
 
@@ -74,7 +75,18 @@ class AppTheme {
       ),
       iconTheme: const IconThemeData(color: Color(0xff2b2b2b)),
       floatingActionButtonTheme: const FloatingActionButtonThemeData(backgroundColor: AppColors.kPrimaryColor, foregroundColor: Colors.white),
-      colorScheme: const ColorScheme.light(primary: AppColors.kPrimaryColor, secondary: AppColors.secondaryDark, surface: AppColors.surfaceGrey, error: AppColors.textError),
+      pageTransitionsTheme: const PageTransitionsTheme(
+        builders: {
+          TargetPlatform.android: CupertinoPageTransitionsBuilder(),
+          TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+        },
+      ),
+      colorScheme: const ColorScheme.light(
+        primary: AppColors.kPrimaryColor,
+        secondary: AppColors.secondaryDark,
+        surface: AppColors.backgroundDark,
+        error: AppColors.textError,
+      ),
     );
   }
 
@@ -121,6 +133,7 @@ class AppTheme {
           surfaceColor: AppColors.surfaceColor,
           lightGrey: AppColors.lightGrey,
           surfaceDark: AppColors.surfaceDark,
+          lightGreen: AppColors.lightGreen,
         ),
       ],
 

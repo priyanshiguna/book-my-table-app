@@ -19,7 +19,7 @@ class WishlistIconButton extends StatelessWidget {
         backgroundColor: customColors(context).whiteColor,
         icon: SvgPicture.asset(
           isWishListed.isTrue ? AppAssets.heartFillIcon : AppAssets.heartIcon,
-          height: 24,
+          height: 20,
         ),
       ),
     );

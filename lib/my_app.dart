@@ -39,6 +39,7 @@ class _MyAppState extends State<MyApp> {
           themeMode: ThemeMode.light,
           theme: AppTheme.lightMode(context),
           darkTheme: AppTheme.darkMode(context),
+          defaultTransition: Transition.cupertino,
           navigatorKey: GlobalContext.instance.navigatorKey,
           getPages: AppPages.pages, // GetPages is a class that holds all the routes of the app
           initialRoute: AppRoutes.splashScreen,

@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -8,10 +10,12 @@ import '../../packages/cached_network_image/cached_network_image.dart';
 import '../../packages/click_effect.dart';
 import '../../res/app_custom_color.dart';
 import '../../res/empty_element.dart';
+import '../../utils/common_enums.dart';
 import '../../widgets/sliver_delegate.dart';
 import 'components/header_widget.dart';
 import 'components/restaurant_card.dart';
 import 'home_controller.dart';
+import 'widgets/notification_view.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -25,40 +29,58 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final searchField = Stack(
+    final searchField = Row(
       children: [
-        AppTextField(
-          controller: con.searchCon.value,
-          hintText: "Search for restaurant, cuisine or a dish",
-          contentPadding: const EdgeInsets.symmetric(vertical: defaultPadding).copyWith(left: defaultPadding * 2),
-          padding: const EdgeInsets.symmetric(horizontal: defaultPadding).copyWith(top: defaultPadding / 2),
-          fillColor: customColors(context).whiteColor,
-          textInputAction: .done,
-          border: OutlineInputBorder(
-            borderRadius: .circular(defaultRadius),
-            borderSide: BorderSide(color: customColors(context).textPrimaryBlack),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: .circular(defaultRadius),
-            borderSide: BorderSide(color: customColors(context).kPrimaryColor),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: .circular(defaultRadius),
-            borderSide: BorderSide(color: customColors(context).kPrimaryColor),
-          ),
-          disabledBorder: OutlineInputBorder(
-            borderRadius: .circular(defaultRadius),
-            borderSide: BorderSide(color: customColors(context).textPrimaryBlack),
-          ),
-          errorBorder: OutlineInputBorder(
-            borderRadius: .circular(defaultRadius),
-            borderSide: BorderSide(color: customColors(context).textError),
+        Expanded(
+          child: Stack(
+            children: [
+              AppTextField(
+                controller: con.searchCon.value,
+                hintText: "Search for restaurant, cuisine or a dish",
+                contentPadding: const EdgeInsets.symmetric(vertical: defaultPadding).copyWith(left: defaultPadding * 2),
+                padding: const EdgeInsets.symmetric(horizontal: defaultPadding).copyWith(top: defaultPadding, right: defaultPadding / 2),
+                fillColor: customColors(context).whiteColor,
+                textInputAction: .done,
+                border: OutlineInputBorder(
+                  borderRadius: .circular(defaultRadius),
+                  borderSide: BorderSide(color: customColors(context).textPrimaryBlack),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: .circular(defaultRadius),
+                  borderSide: BorderSide(color: customColors(context).kPrimaryColor),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: .circular(defaultRadius),
+                  borderSide: BorderSide(color: customColors(context).kPrimaryColor),
+                ),
+                disabledBorder: OutlineInputBorder(
+                  borderRadius: .circular(defaultRadius),
+                  borderSide: BorderSide(color: customColors(context).textPrimaryBlack),
+                ),
+                errorBorder: OutlineInputBorder(
+                  borderRadius: .circular(defaultRadius),
+                  borderSide: BorderSide(color: customColors(context).textError),
+                ),
+              ),
+
+              Padding(
+                padding: const .only(left: defaultPadding * 1.5, top: defaultPadding * 1.5),
+                child: SvgPicture.asset(AppAssets.searchIcon, width: 16.sp),
+              ),
+            ],
           ),
         ),
 
+        // Filter Button
         Padding(
-          padding: const .only(left: defaultPadding * 1.5, top: defaultPadding * 1.5),
-          child: SvgPicture.asset(AppAssets.searchIcon, width: 16.sp),
+          padding: const EdgeInsets.only(right: defaultPadding / 2),
+          child: AppIconButton(
+            onPressed: () {},
+            icon: SvgPicture.asset(
+              AppAssets.filterIcon,
+              height: 18.h,
+            ),
+          ).paddingOnly(top: defaultPadding),
         ),
       ],
     );
@@ -192,7 +214,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                       ),
 
                                       /// Notification
-                                      AppIconButton(onPressed: () {}, icon: SvgPicture.asset(AppAssets.notificationIcon)),
+                                      AppIconButton(
+                                        onPressed: () => _openNotificationDialog(context),
+                                        icon: SvgPicture.asset(AppAssets.notificationIcon),
+                                      ),
                                     ],
                                   ).paddingSymmetric(horizontal: defaultPadding),
 
@@ -213,31 +238,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Column(
                     crossAxisAlignment: .start,
                     children: [
-                      // Special Offers
-                      Row(
-                        mainAxisAlignment: .spaceBetween,
-                        crossAxisAlignment: .center,
-                        children: [
-                          Text(
-                            "Special Offers",
-                            style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600, color: customColors(context).whiteColor, fontSize: 18.sp),
-                          ).paddingSymmetric(horizontal: defaultPadding).paddingOnly(top: defaultPadding * 1.5, bottom: defaultPadding),
-                          TextButton(
-                            onPressed: () {},
-                            child: Text(
-                              "See All",
-                              style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                                fontWeight: FontWeight.w400,
-                                color: customColors(context).kPrimaryColor,
-                                fontSize: 12.sp,
-                              ),
-                            ),
-                          ).paddingOnly(top: defaultPadding / 1.5, right: defaultPadding / 3),
-                        ],
-                      ),
-
                       // Banner Widget
-                      _buildBannerWidget(),
+                      _buildBannerWidget(isBookingAvailable: false),
 
                       // Cuisines
                       Padding(
@@ -292,7 +294,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                     type: restaurant.type,
                                     address: restaurant.address,
                                     isWishListed: restaurant.isWishListed,
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Get.toNamed(AppRoutes.restaurantDetailScreen);
+                                    },
                                     OnWishListPressed: () {
                                       restaurant.isWishListed.value = !(restaurant.isWishListed.value);
                                     },
@@ -317,94 +321,238 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget _buildBannerWidget() {
-    return AspectRatio(
-      aspectRatio: 15 / 7,
-      child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: defaultPadding),
-        padding: const EdgeInsets.all(3),
-        decoration: BoxDecoration(
-          border: Border.all(color: customColors(context).kPrimaryColor),
-          borderRadius: .circular(defaultRadius * 1.4),
-        ),
-        child: Stack(
-          children: [
-            /// Banner Image
-            Container(
-              decoration: BoxDecoration(
-                color: customColors(context).lightGrey,
-                borderRadius: .circular(defaultRadius * 1.3),
-                image: const DecorationImage(image: AssetImage(AppAssets.bannerImage), fit: BoxFit.cover),
-              ),
-            ),
-
-            Positioned(
-              top: defaultPadding / 1.7,
-              left: defaultPadding / 1.1,
-              child: Column(
-                crossAxisAlignment: .start,
-                children: [
-                  /// Weekend Offer Tag
-                  Container(
-                    padding: const .symmetric(horizontal: defaultPadding / 1.4, vertical: defaultPadding / 3.4),
-                    decoration: BoxDecoration(
-                      borderRadius: .circular(defaultRadius * 4),
-                      color: customColors(context).whiteColor,
-                    ),
-                    child: Text(
-                      "Weekend Offers",
-                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        fontSize: 10.sp,
+  void _openNotificationDialog(BuildContext context) {
+    Get.dialog(
+      BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
+        child: Material(
+          color: Colors.transparent,
+          child: SafeArea(
+            child: Column(
+              children: [
+                /// Close Button
+                Align(
+                  alignment: Alignment.topRight,
+                  child: GestureDetector(
+                    onTap: () => Get.back(),
+                    child: Container(
+                      width: 36.w,
+                      height: 36.w,
+                      margin: const EdgeInsets.only(top: defaultPadding, right: defaultPadding),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: customColors(context).kPrimaryColor,
                       ),
+                      child: Icon(Icons.close, size: 20.sp, color: customColors(context).whiteColor),
                     ),
                   ),
+                ),
 
-                  /// Get 20% Off Text
-                  (defaultPadding / 2).verticalSpace,
-                  Text(
-                    "Get Special Offer",
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      fontSize: 19.sp,
-                      color: customColors(context).whiteColor,
-                      fontWeight: .w600,
-                    ),
+                (defaultPadding * 3).verticalSpace,
+
+                /// Notification View
+                Flexible(
+                  child: const NotificationView().paddingSymmetric(horizontal: defaultPadding / 2),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+      barrierColor: Colors.black.withCtmOpacity(0.4),
+    );
+  }
+
+  Widget _buildBannerWidget({bool isBookingAvailable = false}) {
+    return Column(
+      children: [
+        // Special Offers
+        Row(
+          mainAxisAlignment: .spaceBetween,
+          crossAxisAlignment: .center,
+          children: [
+            Text(
+              isBookingAvailable ? "Current Booking" : "Special Offers",
+              style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600, color: customColors(context).whiteColor, fontSize: 18.sp),
+            ).paddingSymmetric(horizontal: defaultPadding).paddingOnly(top: defaultPadding * 1.5, bottom: defaultPadding),
+            if (!isBookingAvailable)
+              TextButton(
+                onPressed: () {},
+                child: Text(
+                  "See All",
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.w400,
+                    color: customColors(context).kPrimaryColor,
+                    fontSize: 12.sp,
                   ),
+                ),
+              ).paddingOnly(top: defaultPadding / 1.5, right: defaultPadding / 3),
+          ],
+        ),
 
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Up to  ",
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          fontSize: 14.sp,
-                          color: customColors(context).whiteColor,
+        AspectRatio(
+          aspectRatio: 15 / 7,
+          child: Container(
+            margin: const EdgeInsets.symmetric(horizontal: defaultPadding),
+            padding: const EdgeInsets.all(3),
+            decoration: BoxDecoration(
+              border: Border.all(color: customColors(context).kPrimaryColor),
+              borderRadius: .circular(defaultRadius * 1.4),
+            ),
+            child: isBookingAvailable
+                ? Padding(
+                    padding: const EdgeInsets.all(defaultPadding).copyWith(top: defaultPadding / 1.5),
+                    child: Column(
+                      crossAxisAlignment: .start,
+                      children: [
+                        Text(
+                          "LibertyBite Bistro",
+                          style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                            fontSize: 19.sp,
+                            color: customColors(context).kPrimaryColor,
+                            fontWeight: .w600,
+                          ),
                         ),
-                      ).paddingOnly(top: defaultPadding / 3),
-                      Text(
-                        "30%",
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          fontSize: 32.sp,
-                          fontWeight: .w600,
-                          color: customColors(context).whiteColor,
+                        (defaultPadding / 1.7).verticalSpace,
+
+                        //* Date & Distance Time
+                        Row(
+                          children: [
+                            SvgPicture.asset(AppAssets.clockIcon).paddingOnly(right: 8.w),
+                            Text(
+                              "Jun 15  2024 , 15 min",
+                              style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                                fontWeight: FontWeight.w400,
+                                fontSize: 14.sp,
+                                color: customColors(context).textPrimaryBlack,
+                              ),
+                            ),
+                          ],
+                        ),
+                        (defaultPadding / 2).verticalSpace,
+
+                        //* Location
+                        Row(
+                          children: [
+                            SvgPicture.asset(AppAssets.locationSVG).paddingOnly(right: 8.w),
+                            Text(
+                              "1089 Ocean avenue , New york, USA ",
+                              maxLines: 2,
+                              overflow: .ellipsis,
+                              style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                                fontWeight: FontWeight.w400,
+                                fontSize: 14.sp,
+                                color: customColors(context).textPrimaryBlack,
+                              ),
+                            ),
+                          ],
+                        ),
+
+                        /// Start Route CTA
+                        Align(
+                          alignment: .centerRight,
+                          child: AppButton(
+                            title: "15 min",
+                            flexibleWidth: true,
+                            height: 24.h,
+                            image: AppAssets.clockIcon,
+                            imageAlign: ImageAlign.startTitle,
+                            imageSize: 13.sp,
+                            padding: const .only(top: defaultPadding),
+                            margin: const EdgeInsets.symmetric(horizontal: defaultPadding / 1.5),
+                            imageColor: customColors(context).whiteColor,
+                            imageSpacing: 5.w,
+                            color: customColors(context).lightGreen,
+                            borderRadius: .circular(defaultRadius / 2),
+                            titleStyle: AppTextStyle.appButtonStyle(context).copyWith(
+                              fontSize: 12.sp,
+                              color: customColors(context).whiteColor,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                : Stack(
+                    children: [
+                      /// Banner Image
+                      Container(
+                        decoration: BoxDecoration(
+                          color: customColors(context).lightGrey,
+                          borderRadius: .circular(defaultRadius * 1.3),
+                          image: const DecorationImage(image: AssetImage(AppAssets.bannerImage), fit: BoxFit.cover),
+                        ),
+                      ),
+
+                      Positioned(
+                        top: defaultPadding / 1.7,
+                        left: defaultPadding / 1.1,
+                        child: Column(
+                          crossAxisAlignment: .start,
+                          children: [
+                            /// Weekend Offer Tag
+                            Container(
+                              padding: const .symmetric(horizontal: defaultPadding / 1.4, vertical: defaultPadding / 3.4),
+                              decoration: BoxDecoration(
+                                borderRadius: .circular(defaultRadius * 4),
+                                color: customColors(context).whiteColor,
+                              ),
+                              child: Text(
+                                "Weekend Offers",
+                                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                                  fontSize: 10.sp,
+                                ),
+                              ),
+                            ),
+
+                            /// Get 20% Off Text
+                            (defaultPadding / 2).verticalSpace,
+                            Text(
+                              "Get Special Offer",
+                              style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                                fontSize: 19.sp,
+                                color: customColors(context).whiteColor,
+                                fontWeight: .w600,
+                              ),
+                            ),
+
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Up to  ",
+                                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                    fontSize: 14.sp,
+                                    color: customColors(context).whiteColor,
+                                  ),
+                                ).paddingOnly(top: defaultPadding / 3),
+                                Text(
+                                  "30%",
+                                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                    fontSize: 32.sp,
+                                    fontWeight: .w600,
+                                    color: customColors(context).whiteColor,
+                                  ),
+                                ),
+                              ],
+                            ),
+
+                            /// Book Now
+                            AppButton(
+                              title: "Book Now",
+                              height: 24.h,
+                              width: 80.w,
+                              fontSize: 10.sp,
+                              onPressed: () {},
+                            ).paddingOnly(top: defaultPadding / 3),
+                          ],
                         ),
                       ),
                     ],
                   ),
-
-                  /// Book Now
-                  AppButton(
-                    title: "Book Now",
-                    height: 24.h,
-                    width: 80.w,
-                    fontSize: 10.sp,
-                    onPressed: () {},
-                  ).paddingOnly(top: defaultPadding / 3),
-                ],
-              ),
-            ),
-          ],
+          ),
         ),
-      ),
+      ],
     );
   }
 

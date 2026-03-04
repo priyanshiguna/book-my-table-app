@@ -10,4 +10,5 @@ class AppRoutes {
   static const String verifyCodeScreen = '/VERIFY_CODE_SCREEN';
 
   static const String bottombarScreen = '/BOTTOMBAR_SCREEN';
+  static const String restaurantDetailScreen = '/RESTAURANT_DETAIL_SCREEN';
 }

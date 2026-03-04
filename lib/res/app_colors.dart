@@ -37,6 +37,7 @@ class AppColors {
 
   /// Button & Indicator Colors
   static const Color buttonGreen = Color(0xFF00B716);
+  static const Color lightGreen = Color(0xFF51A869);
   static const Color yellowBackground = Color(0xFFFFF4CB);
 
   /// Miscellaneous Colors

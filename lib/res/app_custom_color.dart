@@ -30,6 +30,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
   // Button & Indicator Colors
   final Color buttonGreen;
   final Color yellowBackground;
+  final Color lightGreen;
 
   // Miscellaneous Colors
   final Color surfaceGrey;
@@ -63,6 +64,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     required this.surfaceColor,
     required this.lightGrey,
     required this.surfaceDark,
+    required this.lightGreen,
   });
 
   @override
@@ -91,7 +93,8 @@ class CustomColors extends ThemeExtension<CustomColors> {
     Color? surfaceColor,
     Color? lightGrey,
     Color? surfaceDark,
-  }) {
+    Color? lightGreen,
+    }) {
     return CustomColors(
       kPrimaryColor: primaryRed ?? kPrimaryColor,
       secondaryDark: secondaryDark ?? this.secondaryDark,
@@ -117,6 +120,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
       surfaceColor: surfaceColor ?? this.surfaceColor,
       lightGrey: lightGrey ?? this.lightGrey,
       surfaceDark: surfaceDark ?? this.surfaceDark,
+      lightGreen: lightGreen ?? this.lightGreen,
     );
   }
 
@@ -148,6 +152,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
       surfaceColor: Color.lerp(surfaceColor, other.surfaceColor, t)!,
       lightGrey: Color.lerp(lightGrey, other.lightGrey, t)!,
       surfaceDark: Color.lerp(surfaceDark, other.surfaceDark, t)!,
+      lightGreen: Color.lerp(lightGreen, other.lightGreen, t)!,
     );
   }
 }
@@ -181,5 +186,6 @@ CustomColors customColors(BuildContext context) {
         surfaceColor: Colors.grey.shade800,
         lightGrey: Colors.grey.shade500,
         surfaceDark: Colors.black12,
+        lightGreen: Colors.greenAccent,
       );
 }

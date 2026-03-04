@@ -8,6 +8,7 @@ import '../../view/auth/login/widgets/verify_code/verify_code_screen.dart';
 import '../../view/auth/register/register_screen.dart';
 import '../../view/auth/register/widgets/complete_profile/complete_profile_screen.dart';
 import '../../view/bottombar/bottombar_screen.dart';
+import '../../view/home/widgets/restaurant_detail/restaurant_detail_screen.dart';
 import '../../view/splash/splash_screen.dart';
 
 class AppPages {
@@ -23,5 +24,6 @@ class AppPages {
     GetPage(name: AppRoutes.verifyCodeScreen, page: () => VerifyCodeScreen()),
 
     GetPage(name: AppRoutes.bottombarScreen, page: () => BottombarScreen()),
+    GetPage(name: AppRoutes.restaurantDetailScreen, page: () => RestaurantDetailScreen()),
   ];
 }

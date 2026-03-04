@@ -57,7 +57,7 @@ class HomeController extends GetxController {
 
   final List<Map<String, dynamic>> dummyRestaurantList = [
     {
-      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy37y3jgBporrIjJc3Ph92SBIU4Bc9LTwvszhP5vLrkKMMEgsT3qysYZLX41JMhgSzz7QRQFOfo4zG-oAnhGFPSJdkVOknVbv5Yk7v4dZZqCLD9en4ICQuWQtj5Byny8YoKvM0N=s1360-w1360-h1020-rw",
+      "imageUrl": "https://dineout-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/v1662077462/ig4g0ts5itkm73cljx7f.jpg",
       "name": "Zestful Zenith Diner",
       "rating": 4.8,
       "time": "25-30 min",

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_storage/get_storage.dart';
 
-import 'data/services/notification_service.dart';
 import 'exports.dart';
 
 /// 🧠 Shared bootstrap logic for both app runtime and widget testing
@@ -24,7 +23,7 @@ Future<void> bootstrap() async {
     // await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
     // 🔔 Setup push notifications and local notifications
-    await NotificationService.init();
+    // await NotificationService.init();
 
     // 🔄 Lock the app orientation to portrait mode (both up & down)
     await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
