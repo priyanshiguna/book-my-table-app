@@ -11,4 +11,6 @@ class AppRoutes {
 
   static const String bottombarScreen = '/BOTTOMBAR_SCREEN';
   static const String restaurantDetailScreen = '/RESTAURANT_DETAIL_SCREEN';
+  static const String bookATableScreen = '/BOOK_A_TABLE_SCREEN';
+  static const String reviewSummaryScreen = '/REVIEW_SUMMARY_SCREEN';
 }

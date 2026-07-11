@@ -43,6 +43,7 @@ class AppAssets {
   static const String heartIcon = "${svgPath}heart_icon.svg";
   static const String heartFillIcon = "${svgPath}heart_fill_icon.svg";
   static const String filterIcon = "${svgPath}filter_icon.svg";
+  static const String shareIcon = "${svgPath}share.svg";
 
   //* Home Screen
   static const String bannerImage = "${imagesPath}special_offer.png";
